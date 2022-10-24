@@ -1,0 +1,40 @@
+.main {
+    background-color: #79aea3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    color: #f0f0f0;
+}
+
+.liens {
+    margin-right: 20px;
+    text-align: end;
+}
+
+.rs {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logofb {
+    height: 40px;
+}
+
+.logoin {
+    height: 40px;
+}
+
+.logoinsta {
+    height: 42px;
+    margin-left: 5px;
+}
+
+.logotwitter {
+    height: 42px;
+    margin-left: 5px;
+}
+
+.qvt {
+    margin-left: 10px;
+}
