@@ -3,7 +3,8 @@ import Link from 'next/link';
 import Headervert from './Headervert';
 import Footervert from './Footervert';
 
-function Home() {
+
+
   return (
     <div>
       <Headervert />
@@ -28,15 +29,17 @@ function Home() {
         </div>
         </div>
       </main>
+      {articles}
       <div>
-      <Link href = "/dashboard"> go to dashboard</Link> 
+        <Link href="/dashboard"> go to dashboard</Link>
       </div>
       <div>
-      <Link href = "/questionnaire"> go to questionnaire</Link> 
+        <Link href="/questionnaire"> go to questionnaire</Link>
       </div>
+
       <Footervert />
     </div>
   );
-}
+
 
 export default Home;
