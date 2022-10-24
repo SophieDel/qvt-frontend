@@ -4,7 +4,7 @@ import Headervert from './Headervert';
 import Footervert from './Footervert';
 
 
-
+function Home() {
   return (
     <div>
       <Headervert />
@@ -29,7 +29,6 @@ import Footervert from './Footervert';
         </div>
         </div>
       </main>
-      {articles}
       <div>
         <Link href="/dashboard"> go to dashboard</Link>
       </div>
@@ -40,6 +39,6 @@ import Footervert from './Footervert';
       <Footervert />
     </div>
   );
-
+  }
 
 export default Home;
