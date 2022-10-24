@@ -20,3 +20,12 @@
   .title a:hover, .title a:focus, .title a:active {
     text-decoration: underline;
   }
+
+  .articlesContainer{
+    display: flex;
+    width: 60%;
+    border: black 5px solid;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px
+  }

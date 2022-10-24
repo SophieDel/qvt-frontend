@@ -1,14 +1,10 @@
-import Footerblanc from "./Footerblanc";
-import Headerblanc from "./Headerblanc";
-import styles from "../styles/Dashboard.module.css";
-import Link from "next/link";
-import Article from './Article';
+import Article from "./Article";
 import { useEffect, useState } from "react";
+import styles from "../styles/Dashboard.module.css";
 
 const url = "http://localhost:3000";
 
 function Dashboard() {
-
   // const articlesData = [
   //   {
   //     _id: "6356815b2e605772ead184a0",
@@ -34,41 +30,29 @@ function Dashboard() {
 
   let theme = "stress";
 
-const [articlesData, setArticlesData] = useState([]);
-  
-// Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
-  
-useEffect(() => {
-  fetch(`${url}/articles/${theme}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      setArticlesData(data.articles);
-    });
-}, []);
+  const [articlesData, setArticlesData] = useState([]);
+
+  // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
+
+  useEffect(() => {
+    fetch(`${url}/articles/${theme}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setArticlesData(data.articles);
+      });
+  }, []);
+
   const articles = articlesData.map((data, i) => {
-      return <Article key={i} {...data} />;
+    return <Article key={i} {...data} />;
   });
 
   return (
     <div>
-        <Headerblanc />
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-      </main>
-      {articles}
-      <div>
-        <Link href="/dashboard"> go to dashboard</Link>
-      </div>
-      <div>
-        <Link href="/questionnaire"> go to questionnaire</Link>
-      </div>
-      <Footerblanc />
+      <h2>Votre plan d'action personnalisé</h2>
+      <div className={styles.articlesContainer}>{articles}</div>
     </div>
   );
 }
 
 export default Dashboard;
-
