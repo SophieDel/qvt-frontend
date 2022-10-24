@@ -1,4 +1,11 @@
+/*Quand la souris passe sur l'image avec le lien, elle devient une main (pour signifier qu'on peut cliquer)*/
 .faExternalLink:hover {
     outline: 1px #ffffff solid;
     cursor: pointer;
   }
+
+.container{
+  display: flex;
+  flex-direction: "row";
+  justify-content: space-around;
+}
