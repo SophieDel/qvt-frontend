@@ -1,13 +1,75 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+  /* justify-content: center;
+  align-items: center; */
+  height: 80vh;
+  /* padding: 4rem 0; */
 }
 
-.title {
+.prez {
+  text-align: justify;
+  padding: 35px;
+  font-size: 20px;
+}
+
+.contain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100vw;
+  
+}
+
+.inputemail {
+  width: 450px;
+  height: 50px;
+  margin: 30px;
+  font-size: 20px;
+}
+
+.inputmdp {
+  width: 450px;
+  height: 50px;
+  margin: 30px;
+  font-size: 20px;
+}
+
+.coche {
+  padding-right: 40px;
+}
+
+.ligne {
+  display: flex;
+  /* flex-direction: space-between;
+  align-items: space-between; */
+  margin: 5px;
+  font-size: 20px;
+}
+
+.btnlogin {
+  width: 150px ;
+  height: 50px;
+  border-radius: 20px;
+  color: #f0f0f0;
+  background-color: #79aea3;
+  border: 5px, solid, white;
+  cursor: pointer;
+  padding: 12px;
+  padding-left: 20px;
+  font-size: 20px;
+  margin: 50px;
+}
+
+.creer {
+  font-size: 30px;
+}
+
+
+
+/* .title {
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -19,4 +81,4 @@
 
 .title a:hover, .title a:focus, .title a:active {
   text-decoration: underline;
-}
+} */

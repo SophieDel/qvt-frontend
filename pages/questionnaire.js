@@ -1,7 +1,8 @@
 import Questionnaire from '../components/Questionnaire';
 
 function Question() {
-return <Questionnaire />;
+return <Questionnaire />
+
 }
 
 export default Question;
