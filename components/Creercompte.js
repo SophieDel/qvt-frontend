@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Headervert from './Headervert';
 import Footervert from './Footervert';
 
-function Questionnaire() {
+function Creercompte() {
     return (
         <div>
              <Headervert />
@@ -13,5 +13,4 @@ function Questionnaire() {
     );
     }
     
-    export default Questionnaire;
-    
+    export default Creercompte;

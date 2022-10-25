@@ -5,12 +5,13 @@ import Footervert from './Footervert';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
+import { login} from '../reducers/user';
 
 
 function Home() {
 
-  // const dispatch = useDispatch();
-  // const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
   const [signInEmail, setSignInEmail] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
 
@@ -22,14 +23,19 @@ function Home() {
         body: JSON.stringify({ email: signInEmail, mdp: signInPassword }),
     }).then(response => response.json())
         .then(data => {
+          console.log ("avant if", data)
             if (data.result) {
-              console.log("ca marche")
-                // dispatch(login({ equipe: data.equipe, manager: data.manager, token: data.token }));
+          
+                dispatch(login({ token: data.token }));
+                //, equipe: data.equipe, manager: data.manager
+                console.log(data)
+                console.log ("ok")
                 setSignInEmail('');
                 setSignInPassword('');
             //     // setIsModalVisible(false)
             //METTRE CONDITION DE RENVOI A DASHBOARD SI LE QUESTIONNAIRE A ETE REMPLI
                 window.location.href = "/questionnaire"
+
             //     setOpen(false);
             // }    setOpen(false);
         }
