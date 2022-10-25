@@ -1,4 +1,5 @@
 import styles from '../styles/Footervert.module.css';
+import Link from 'next/link';
 
 function Footervert() {
 return (
@@ -11,9 +12,15 @@ return (
         <img src='twitter.png' className={styles.logotwitter}/>
         </div>
         <div className={styles.liens}>
-            <div>FAQ</div>
-            <div>Nous contacter</div>
-            <div>Mentions légales</div>
+            <div>
+            <a href = "/faq" target="_blank" rel="noopener noreferrer"> FAQ</a>
+            </div>
+            <div>
+            <a href = "/contact" target="_blank" rel="noopener noreferrer"> Nous contacter</a>
+            </div>
+            <div>
+            <a href = "/mentionslegales" target="_blank" rel="noopener noreferrer"> Mentions légales</a>
+            </div>
         </div>
     </div>
 );
