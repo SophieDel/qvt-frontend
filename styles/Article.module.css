@@ -1,6 +1,5 @@
 /*Quand la souris passe sur l'image avec le lien, elle devient une main (pour signifier qu'on peut cliquer)*/
 .faExternalLink:hover {
-    outline: 1px #ffffff solid;
     cursor: pointer;
   }
 
@@ -8,4 +7,37 @@
   display: flex;
   flex-direction: "row";
   justify-content: space-around;
+  overflow: auto
 }
+
+.articleHeader {
+  height: 10%;
+  width: 100%
+}
+
+.illustrationContainer {
+width: 20%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.illustration {
+  max-width:100%;
+max-height:100%;
+}
+
+.resume {
+width: 60%;
+text-align: justify;
+}
+
+.lien {
+  height: auto;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+

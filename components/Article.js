@@ -11,7 +11,8 @@ function Article(props) {
     window.open(props.lien, "_blank", "noopener,noreferrer");
   };
   
-  console.log(props.lien)
+  console.log( "type props.lien", typeof(props.lien))
+  console.log(typeof(props.lien) == "string")
 
   return (
     <div className={styles.articles}>
@@ -19,12 +20,10 @@ function Article(props) {
         <h3>{props.titre}</h3>
       </div>
       <div className={styles.container}>
-        <div className={styles.image}>
-          {/* <Image src={props.illustration} width={"20%"} height={"20%"} alt="contenu Media"></Image> */}
+        <div className={styles.illustrationContainer}>
           <img
+          className={styles.illustration}
             src={props.illustration}
-            width={"30%"}
-            height={"40%"}
             alt="contenu Media"
           />
         </div>
@@ -33,13 +32,7 @@ function Article(props) {
         </div>
         <div className={styles.lien}>
             
-          {/* <Link to={{ pathname: props.lien }} target="_blank">En savoir plus</Link> */}
-          {/* <FontAwesomeIcon
-            onClick={() => handleOpenArticle()}
-            icon={faExternalLink}
-            transform="grow-6"
-            className={styles.faExternalLink}
-          /> */}
+        <a href={props.lien} target="_blank" rel="noopener noreferrer" >En savoir plus</a>
         </div>
       </div>
     </div>
