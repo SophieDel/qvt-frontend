@@ -20,12 +20,10 @@ function Article(props) {
         <h3>{props.titre}</h3>
       </div>
       <div className={styles.container}>
-        <div className={styles.image}>
-          {/* <Image src={props.illustration} width={"20%"} height={"20%"} alt="contenu Media"></Image> */}
+        <div className={styles.illustrationContainer}>
           <img
+          className={styles.illustration}
             src={props.illustration}
-            width={"30%"}
-            height={"40%"}
             alt="contenu Media"
           />
         </div>
