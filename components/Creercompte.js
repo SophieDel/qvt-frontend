@@ -18,13 +18,16 @@ function Creercompte() {
     const [signUpGenre, setSignUpGenre] = useState('');
     const [signUpEquipe, setSignUpEquipe] = useState('');
     const [signUpService, setSignUpService] = useState('');
+    const [signUpManager, setSignUpManager] = useState('');
+    const [signUpQvt, setSignUpQvt] = useState('');
+    const [signUpPartenaire, setSignUpPartenaire] = useState('');
 
 
     const handleRegister = () => {
         fetch('http://localhost:3000/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ genre: signUpGenre, prenom: signUpPrenom, nom: signUpNom, email: signUpEmail, mdp: signUpMdp, poste: signUpPoste, equipe: signUpEquipe, service: signUpService }),
+            body: JSON.stringify({ genre: signUpGenre, prenom: signUpPrenom, nom: signUpNom, email: signUpEmail, mdp: signUpMdp, poste: signUpPoste, equipe: signUpEquipe, service: signUpService, cgu: true, manager: signUpManager, RGPDqvt: signUpQvt, RGPDParternaire: signUpPartenaire }),
         })
         .then(response => response.json())
             .then(data => {
@@ -40,7 +43,8 @@ function Creercompte() {
                     setSignUpGenre('');
                     setSignUpEquipe('');
                     setSignUpService('');
-        // window.location.href = "/questionnaire"
+                    // setSignUpManager(null);
+        window.location.href = "/questionnaire"
 
                 }else {
     
@@ -51,10 +55,6 @@ function Creercompte() {
     };
     console.log(signUpGenre)
 
-    // const handleChange = (e) => {
-    //     this.setState({selectValue:e.target.value});
-
-    //     }
     return (
         <div>
         <Headervert />
@@ -94,45 +94,45 @@ function Creercompte() {
         <option value="service3">Service 3</option>
 </select>
 </div>
-{/*<div className={styles.optin}>
+<div className={styles.optin}>
 Je suis manager de mon équipe
-    <div className={styles.ouinon}>
+    <div className={styles.ouinon} onChange={(e) => setSignUpManager(e.target.value)} value={signUpManager}>
     <input type="radio" id="oui"
-    name="oui" value="oui"/>
+    name="oui" value="true"/>
     <label for="oui">Oui</label>
 
     <input type="radio" id="non"
-    name="non" value="non"/>
+    name="non" value="false"/>
     <label for="non">Non</label>
     </div>
 </div>
 <div className={styles.optin}>
 J’accepte de recevoir les offres commerciales de QVT
-<div className={styles.ouinon}>
+<div className={styles.ouinon} onChange={(e) => setSignUpQvt(e.target.value)} value={signUpQvt}>
     <input type="radio" id="oui"
-    name="oui" value="oui"/>
+    name="oui" value="true"/>
     <label for="oui">Oui</label>
 
     <input type="radio" id="non"
-    name="non" value="non"/>
+    name="non" value="false"/>
     <label for="non">Non</label>
 </div>
 </div>
 <div className={styles.optin}>
     J’accepte de recevoir des offres commerciales des partenaires de QVT
-    <div className={styles.ouinon}>
+    <div className={styles.ouinon} onChange={(e) => setSignUpPartenaire(e.target.value)} value={signUpPartenaire}>
     <input type="radio" id="oui"
-    name="oui" value="oui"/>
+    name="oui" value="true"/>
     <label for="oui">Oui</label>
 
     <input type="radio" id="non"
-    name="non" value="non"/>
+    name="non" value="false"/>
     <label for="non">Non</label>
 </div>
 </div>
 <div className={styles.checkbox}>
 <input type="checkbox"/>J’ai pris connaissance et j’accepte les Conditions Générales d’Utilisation et de Participation que la Politique de confidentialité de QVT
-</div> */}
+</div> 
 <div className={styles.btn}>
 <button className={styles.btnretour}>Retour</button>
 <button className={styles.btncreer} onClick={() => handleRegister()}>Créer un compte</button>
