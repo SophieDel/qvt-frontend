@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import{login} from '../reducers/user';
 import React from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 function Creercompte() {
     const dispatch = useDispatch();
@@ -22,8 +24,11 @@ function Creercompte() {
     const [signUpQvt, setSignUpQvt] = useState('');
     const [signUpPartenaire, setSignUpPartenaire] = useState('');
 
+    const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 
     const handleRegister = () => {
+        if (EMAIL_REGEX.test(signUpEmail)) {
         fetch('http://localhost:3000/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -52,6 +57,14 @@ function Creercompte() {
 
         }
             });
+        }else {
+            return (
+                <Popup trigger={<button> Trigger</button>} position="right center">
+                <div>Popup content here !!</div>
+                </Popup>
+            )
+        }
+
     };
     console.log(signUpGenre)
 
