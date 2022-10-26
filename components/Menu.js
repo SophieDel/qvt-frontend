@@ -17,7 +17,7 @@ function Menu() {
 <div className={styles.titre}>QUIZ
 <div>
 <div>
-<Button href = "/qHebdo" className={styles.liens}> Quiz de la semaine</Button>
+<Button href = "/qhebdo" className={styles.liens}> Quiz de la semaine</Button>
 </div>
 <div>
 <Button href = "/questionnaire" className={styles.liens}> Mon questionnaire</Button>
