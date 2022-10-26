@@ -8,6 +8,8 @@ import{login} from '../reducers/user';
 import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { Modal, Button, Space } from 'antd';
+
 
 function Creercompte() {
     const dispatch = useDispatch();
@@ -23,12 +25,17 @@ function Creercompte() {
     const [signUpManager, setSignUpManager] = useState('');
     const [signUpQvt, setSignUpQvt] = useState('');
     const [signUpPartenaire, setSignUpPartenaire] = useState('');
+    const [open, setOpen] = useState(false);
+    const [openRegex, setOpenRegex] = useState(false);
+    const [MessCB, setMessCB] =  useState('');;
+    
 
     const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
     const handleRegister = () => {
         if (EMAIL_REGEX.test(signUpEmail)) {
+            console.log("boucle regex")
         fetch('http://localhost:3000/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -53,20 +60,56 @@ function Creercompte() {
 
                 }else {
     
-        console.log("marche pas")
+        console.log(data.error)
+        setOpen(true);
+        setMessCB (data.error)
 
         }
             });
         }else {
-            return (
-                <Popup trigger={<button> Trigger</button>} position="right center">
-                <div>Popup content here !!</div>
-                </Popup>
-            )
+            console.log ("else")
+            setOpenRegex(true);
+            
+        //     const info = () => {
+        //         Modal.info({
+        //           title: 'This is a notification message',
+        //           content: (
+        //             <div>
+        //               <p>some messages...some messages...</p>
+        //               <p>some messages...some messages...</p>
+        //             </div>
+        //           ),
+        //           onOk() {},
+        //         });
+        //       };
+        //       info();
         }
-
     };
-    console.log(signUpGenre)
+    
+    let modalContent = (
+            <div>
+                <p>{MessCB}</p>
+                <button id="CLOTURE" onClick={() => closeModale()}>FERMER</button>
+            </div>
+        );
+
+        let modalRegexContent = (
+            <div>
+                <p>Email incorrect</p>
+                <button id="CLOTURE" onClick={() => closeModaleRegex()}>FERMER</button>
+            </div>
+        );
+
+
+        const closeModaleRegex  = () => {
+            setOpenRegex(false);
+            console.log("fermeture")
+        }        
+    const closeModale  = () => {
+        setOpen(false);
+        console.log("fermeture")
+    }
+    
 
     return (
         <div>
@@ -87,6 +130,11 @@ function Creercompte() {
 <input type="text" placeholder="Prénom" className={styles.input} onChange={(e) => setSignUpPrenom(e.target.value)} value={signUpPrenom} />
 <input type="text" placeholder="Nom" className={styles.input} onChange={(e) => setSignUpNom(e.target.value)} value={signUpNom} />
 <input type="email" placeholder="Email" className={styles.input} onChange={(e) => setSignUpEmail(e.target.value)} value={signUpEmail} />
+{openRegex && <div id="react-modals">
+				<Modal getContainer="#react-modals" className={styles.modal} visible={openRegex} closable={false} footer={null}>
+					{modalRegexContent}
+				</Modal>
+			</div>}
 <input type="password" placeholder="Mot de passe" className={styles.input} onChange={(e) => setSignUpMdp(e.target.value)} value={signUpMdp}/>
 <input type="text" placeholder="Poste" className={styles.input} onChange={(e) => setSignUpPoste(e.target.value)} value={signUpPoste}/>
 <div className={styles.select}>
@@ -110,37 +158,37 @@ function Creercompte() {
 <div className={styles.optin}>
 Je suis manager de mon équipe
     <div className={styles.ouinon} onChange={(e) => setSignUpManager(e.target.value)} value={signUpManager}>
-    <input type="radio" id="oui"
-    name="oui" value="true"/>
-    <label for="oui">Oui</label>
+    <input type="radio" id="Q1"
+    name="Q1" value="true"/>
+    <label for="Q1">Oui</label>
 
-    <input type="radio" id="non"
-    name="non" value="false"/>
-    <label for="non">Non</label>
+    <input type="radio" id="Q1"
+    name="Q1" value="false"/>
+    <label for="Q1">Non</label>
     </div>
 </div>
 <div className={styles.optin}>
 J’accepte de recevoir les offres commerciales de QVT
 <div className={styles.ouinon} onChange={(e) => setSignUpQvt(e.target.value)} value={signUpQvt}>
-    <input type="radio" id="oui"
-    name="oui" value="true"/>
-    <label for="oui">Oui</label>
+    <input type="radio" id="Q2"
+    name="Q2" value="true"/>
+    <label for="Q2">Oui</label>
 
-    <input type="radio" id="non"
-    name="non" value="false"/>
-    <label for="non">Non</label>
+    <input type="radio" id="Q2"
+    name="Q2" value="false"/>
+    <label for="Q2">Non</label>
 </div>
 </div>
 <div className={styles.optin}>
     J’accepte de recevoir des offres commerciales des partenaires de QVT
     <div className={styles.ouinon} onChange={(e) => setSignUpPartenaire(e.target.value)} value={signUpPartenaire}>
-    <input type="radio" id="oui"
-    name="oui" value="true"/>
-    <label for="oui">Oui</label>
+    <input type="radio" id="Q3"
+    name="Q3" value="true"/>
+    <label for="Q3">Oui</label>
 
-    <input type="radio" id="non"
-    name="non" value="false"/>
-    <label for="non">Non</label>
+    <input type="radio" id="Q3"
+    name="Q3" value="false"/>
+    <label for="Q3">Non</label>
 </div>
 </div>
 <div className={styles.checkbox}>
@@ -149,6 +197,11 @@ J’accepte de recevoir les offres commerciales de QVT
 <div className={styles.btn}>
 <button className={styles.btnretour}>Retour</button>
 <button className={styles.btncreer} onClick={() => handleRegister()}>Créer un compte</button>
+{open && <div id="react-modals">
+				<Modal getContainer="#react-modals" className={styles.modal} visible={open} closable={false} footer={null}>
+					{modalContent}
+				</Modal>
+			</div>}
 </div>
 </div>
 

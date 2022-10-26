@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import { login} from '../reducers/user';
+import 'reactjs-popup/dist/index.css';
+import { Modal, Button, Space } from 'antd';
 
 
 function Home() {
@@ -14,6 +16,8 @@ function Home() {
   const user = useSelector((state) => state.user.value);
   const [signInEmail, setSignInEmail] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
+  const [open, setOpen] = useState(false);
+  const [MessCB, setMessCB] =  useState('');;
 
   const handleConnection = () => {
 
@@ -39,9 +43,22 @@ function Home() {
             //     setOpen(false);
             // }    setOpen(false);
         }
+        setOpen(true);
+        setMessCB (data.error)
       });
 };
 
+let modalContent = (
+  <div>
+      <p>{MessCB}</p>
+      <button id="CLOTURE" onClick={() => closeModale()}>FERMER</button>
+  </div>
+);
+
+const closeModale  = () => {
+  setOpen(false);
+  console.log("fermeture")
+}
 
 
   return (
@@ -62,6 +79,11 @@ function Home() {
         <Link href = "/mdpoublie"> Mot de passe oublié ?</Link> 
         </div>
         </div>
+        {open && <div id="react-modals">
+				<Modal getContainer="#react-modals" className={styles.modal} visible={open} closable={false} footer={null}>
+					{modalContent}
+				</Modal>
+			</div>}
         <button className={styles.btnlogin} onClick={() => handleConnection()}>Connexion</button>
         <div className={styles.creer}>
         <Link href = "/creercompte" > Créer un compte</Link>
