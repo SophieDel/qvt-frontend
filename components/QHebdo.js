@@ -34,7 +34,11 @@ function qhebdo() {
         var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
         let semaine=Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
         console.log (semaine)
-    
+   
+   
+   //on n'envoie un message que si il a été saisi
+        if(Message===''){}
+        else{
         fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -51,7 +55,7 @@ function qhebdo() {
                         setOpen(true);
                 
                 }});
-
+            }
 
 
 

@@ -1,4 +1,4 @@
-import styles from "../styles/Article.messages.css";
+import styles from "../styles/Article.module.css";
 
 
 function MessageCollab(props) {

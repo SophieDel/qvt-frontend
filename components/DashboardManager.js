@@ -12,28 +12,33 @@ import { Modal, Button, Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu'
-import MessageCollab from "./MessagesCollab";
+import MessageManager from "./MessagesMnger";
 import Message from '../../qvt-backend/models/messages';
 
 function DashboardManager() {
 
     const user = useSelector((state) => state.user.value);
     const [MessagesData, setMessagesData] = useState([]);
+    const [count, setCount] = useState(0);
 
     // Display des messages  à l'initialisation,   
     useEffect(() => {
-      fetch(`http://localhost:3000/messages/MessageManager/${user.equipe}`)
+      fetch(`http://localhost:3000/messages/MessageEquipe/${user.equipe}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log("data des messages" ,data.data[0].message);
+  
           setMessagesData(data.data);
+          setCount(count+1)
           console.log(MessagesData);
         });
-    }, []);
+    }, [count]);
   
-    const messages = MessagesData.map((data, i) => {
-      return <MessageCollab key={i} {...data} />;
-    });
+    let messages
+    if (MessagesData){ messages= MessagesData.map((data, i) => {
+      return <MessageManager key={i} {...data} />;
+    })} else {
+        messages =<></>
+    };
     
 return (
     <div className={styles.main}>
