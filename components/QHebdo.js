@@ -1,7 +1,7 @@
-import styles from '../styles/Creercompte.module.css';
+import styles from '../styles/Qhebdo.module.css';
 import Link from 'next/link';
-import Headervert from './Headervert';
-import Footervert from './Footervert';
+import Headerblanc from './Headerblanc';
+import Footerblanc from './Footerblanc';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import{login} from '../reducers/user';
@@ -11,6 +11,7 @@ import 'reactjs-popup/dist/index.css';
 import { Modal, Button, Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
+import Menu from './Menu'
 
 function qhebdo() {
     const dispatch = useDispatch();
@@ -23,12 +24,20 @@ function qhebdo() {
     const [NoteQ3, setNoteQ3] = useState(0);
     const [open, setOpen] = useState(false);
 
-const handleRegister = () => {
-    console.log (user.token)
-    fetch(`http://localhost:3000/users/Qhebdo/${user.token}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ Q1: NoteQ1, Q2: NoteQ2, Q3: NoteQ3 }),
+    const handleRegister = () => {
+
+        //calcul du numéro de semaine pour envoi à collection
+        let currentdate = new Date();
+        var oneJan = new Date(currentdate.getFullYear(),0,1);
+        var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
+        let semaine=Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+        console.log (semaine)
+        
+        
+        fetch(`http://localhost:3000/users/Qhebdo/${user.token}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ semaine : semaine, Q1: NoteQ1, Q2: NoteQ2, Q3: NoteQ3 }),
     })
     .then(response => response.json())
         .then(data => {
@@ -85,35 +94,46 @@ let modalContent = (
 );
 
 return (
-    <div>
-    <Headervert />
+    <div className={styles.main}>
+    <Headerblanc />
 <div className={styles.contain}>
-    <div className={styles.titre}>blablabla Merci de répondre au questionnaire hebdo blablabla</div>
-Question 1 : sur une echelle de 1 à 10 blablabla
-<span>{Q1Stars} </span>
+<Menu />
+<div className={styles.questionnaire}>
+    <div className={styles.titre}>Merci de répondre au questionnaire hebdomadaire</div>
+<div className={styles.question}>
+<div className={styles.qtitre}>Sur une echelle de 1 à 10, comment evaluez-vous votre niveau de stress ?</div>
+<div className={styles.stars}>{Q1Stars} </div>
+</div>
 {/* <input type="text" placeholder="Note de 1 à 10" className={styles.input} onChange={(e) => setRepQ1(e.target.value)} value={RepQ1} /> */}
-Question 2 : sur une echelle de 1 à 10 blablabla 
-<span>{Q2Stars} </span>
+<div className={styles.question}>
+<div className={styles.qtitre}>Sur une echelle de 1 à 10, comment évaluez-vous votre confiance en votre manager ? </div>
+<div className={styles.stars}>{Q2Stars} </div>
+</div>
 {/* <input type="text" placeholder="Note de 1 à 10" className={styles.input} onChange={(e) => setRepQ2(e.target.value)} value={RepQ2} />  */}
-Question 3 : sur une echelle de 1 à 10 blablabla 
-<span>{Q3Stars} </span>
+<div className={styles.question}>
+<div className={styles.qtitre}>Sur une echelle de 1 à 10, comment évaluez-vous votre motivation ?</div> 
+<div className={styles.stars}>{Q3Stars} </div>
 {/* <input type="email" placeholder="Note de 1 à 10" className={styles.input} onChange={(e) => setRepQ3(e.target.value)} value={RepQ3} />  */}
-
-<div className={styles.btn}>
-<button className={styles.btnretour}>Retour</button>
-<button className={styles.btncreer} onClick={() => handleRegister()}>Valider mon questionnaire</button>
+</div>
+<div className={styles.boutons}>
+<Button className={styles.btn} href = "/dashboard">Retour</Button>
+<Button className={styles.btn} onClick={() => handleRegister()}>Valider</Button>
 {open && <div id="react-modals">
                 <Modal getContainer="#react-modals" className={styles.modal} visible={open} closable={false} footer={null}>
                     {modalContent}
                 </Modal>
             </div>}
+            </div>
 
 </div>
 </div>
 
 
-    <Footervert />
-    </div>
+
+    <Footerblanc />
+
+
+</div>
 );
 }
 
