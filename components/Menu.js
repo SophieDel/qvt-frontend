@@ -29,6 +29,10 @@ function Menu() {
 <div>
 <Button href = "/reportings" className={styles.liens}> Mes reportings</Button></div>
 </div>
+<div className={styles.titre}>MESSAGES
+<div>
+<Button href = "/messages" className={styles.liens}> Mes messages</Button></div>
+</div>
 </div>
 <div>
 <div className={styles.profil}>

@@ -1,4 +1,4 @@
-import styles from "../styles/Article.module.css";
+import styles from "../styles/MessageCollab.module.css";
 
 
 function MessageCollab(props) {
@@ -8,28 +8,26 @@ function MessageCollab(props) {
 //   console.log(typeof(props.lien) == "string")
 
   return (
-    <div className={styles.articles}>
-      <div className={styles.articleHeader}>
-        <h3>Date de l'envoi du message au manager: {props.dateRecep}</h3>
+    <div className={styles.container}>
+      <div>
+        <div className={styles.labeldate}>Date d'envoi: 
+        <div className={styles.date}>{props.dateRecep}</div>
       </div>
-      <div className={styles.container}>
-        
+        <div className={styles.label}>Message envoyé: 
+        <div className={styles.messageenvoye}>{props.message}</div>
         </div>
-        <div className={styles.resume}>
-          <p>Message envoyé: {props.message}</p>
         </div>
-        <div className={styles.articleHeader}>
-        <h3>Date de la réponse du manager: {props.dateReponse}</h3>
+        <div>
+        <div className={styles.labeldate}>Date de réponse: 
+        <div className={styles.date}>{props.dateReponse}</div>
+        </div>
+        <div>
+        <div className={styles.label}>Réponse du manager: 
+        <div className={styles.question}>{props.reponse}</div>
+        </div>
+        </div>
+        </div>
       </div>
-      <div className={styles.container}>
-        
-        </div>
-        <div className={styles.resume}>
-          <p>Réponse du manager: {props.reponse}</p>
-        </div>
-       
-      </div>
-
   );
 }
 
