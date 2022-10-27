@@ -1,0 +1,14 @@
+[
+  {
+    "Q24": {
+      "question": "Je me sens stressé(e) par mon travail",
+      "reponse": ["en permanence", "souvent", "parfois", "rarement", "jamais"]
+    }
+  },
+  {
+    "Q25": {
+      "question": "Je sens que je craque à cause de mon travail",
+      "reponse": ["en permanence", "souvent", "parfois", "rarement", "jamais"]
+    }
+  }
+]
