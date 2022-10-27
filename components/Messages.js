@@ -1,21 +1,15 @@
-import styles from '../styles/Profil.module.css';
-import Link from 'next/link';
+import styles from '../styles/Messages.module.css';
+
 import Headerblanc from './Headerblanc';
 import Footerblanc from './Footerblanc';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import{login} from '../reducers/user';
 import React from 'react';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { Modal, Button, Space } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu'
 import MessageCollab from "./MessagesCollab";
-import Message from '../../qvt-backend/models/messages';
 
-function profil() {
+function message() {
 
     const user = useSelector((state) => state.user.value);
     const [MessagesData, setMessagesData] = useState([]);
@@ -39,14 +33,11 @@ return (
     <div className={styles.main}>
     <Headerblanc />
 <div className={styles.contain}>
+    
 <Menu />
-<div className={styles.profil}>
-    <div className={styles.titre}>Mon profil</div>
-    <div className={styles.infos}></div>
-    <div className={styles.boutons}>
-<Button className={styles.btn} href = "/dashboard">Retour</Button>
-<Button className={styles.btn}>Modifier</Button>
-</div>
+<div className={styles.messages}>
+<div className={styles.titre}>Mes messages</div>
+<div className={styles.messagesContainer}>{messages}</div>
 </div>
 </div>
     <Footerblanc />
@@ -54,4 +45,4 @@ return (
 );
 }
 
-export default profil;
+export default message;
