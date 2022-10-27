@@ -15,14 +15,14 @@ import Menu from './Menu'
 import MessageCollab from "./MessagesCollab";
 import Message from '../../qvt-backend/models/messages';
 
-function profil() {
+function DashboardManager() {
 
     const user = useSelector((state) => state.user.value);
     const [MessagesData, setMessagesData] = useState([]);
 
     // Display des messages  à l'initialisation,   
     useEffect(() => {
-      fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`)
+      fetch(`http://localhost:3000/messages/MessageManager/${user.equipe}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("data des messages" ,data.data[0].message);
@@ -55,4 +55,4 @@ return (
 );
 }
 
-export default profil;
+export default DashboardManager;

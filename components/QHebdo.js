@@ -12,6 +12,7 @@ import { Modal, Button, Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu'
+import Message from '../../qvt-backend/models/messages';
 
 function qhebdo() {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function qhebdo() {
     const [RepQ1, setRepQ1] = useState('');
     const [RepQ2, setRepQ2] = useState('');
     const [RepQ3, setRepQ3] = useState('');
+    const [Message, setMessage] = useState('');
     const [NoteQ1, setNoteQ1] = useState(0);
     const [NoteQ2, setNoteQ2] = useState(0);
     const [NoteQ3, setNoteQ3] = useState(0);
@@ -32,7 +34,27 @@ function qhebdo() {
         var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
         let semaine=Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
         console.log (semaine)
-        
+    
+        fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: Message}),
+    })
+    .then(response => response.json())
+        .then(data => {
+                if (data) {
+                setMessage('');
+
+                    }else {
+
+                        console.log(data.error)
+                        setOpen(true);
+                
+                }});
+
+
+
+
         
         fetch(`http://localhost:3000/users/Qhebdo/${user.token}`, {
             method: 'POST',
@@ -49,14 +71,16 @@ function qhebdo() {
                 // setRepQ1('');
                 // setRepQ2('');
                 // setRepQ3('');
-    window.location.href = "/dashboard"
+
                     }else {
 
                         console.log(data.error)
                         setOpen(true);
                 
                 }});
-};
+
+                window.location.href = "/dashboard"
+            };
  // Etoiles notation Questions 1 2 et 3
 const Q1Stars = [];
 for (let i = 0; i < 10; i++) {
@@ -93,6 +117,13 @@ let modalContent = (
     </div>
 );
 
+let MessageSection;
+if (user.manager===false) {
+  MessageSection = (
+<input type="text" placeholder="Message pour votre Manager" className={styles.input} onChange={(e) => setMessage(e.target.value)} value={Message} />
+  )};
+
+
 return (
     <div className={styles.main}>
     <Headerblanc />
@@ -114,6 +145,9 @@ return (
 <div className={styles.qtitre}>Sur une echelle de 1 à 10, comment évaluez-vous votre motivation ?</div> 
 <div className={styles.stars}>{Q3Stars} </div>
 {/* <input type="email" placeholder="Note de 1 à 10" className={styles.input} onChange={(e) => setRepQ3(e.target.value)} value={RepQ3} />  */}
+
+{MessageSection}
+
 </div>
 <div className={styles.boutons}>
 <Button className={styles.btn} href = "/dashboard">Retour</Button>
