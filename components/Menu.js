@@ -9,9 +9,21 @@ function Menu() {
     return (
         <div className={styles.contain}>
             <div>
-<div className={styles.titre}>DASHBOARD
+{/* <div className={styles.titre}>DASHBOARD
 <div>
 <Button href = "/dashboard" className={styles.liens}> Mon dashboard</Button></div>
+
+</div> */}
+
+<div className={styles.titre}>DASHBOARD
+<div>
+<div>
+<Button href = "/dashboard" className={styles.liens}> Mon dashboard </Button>
+</div>
+<div>
+<Button href = "/dashboardManager" className={styles.liens}> Dashboard manager</Button>
+</div>
+</div>
 </div>
 
 <div className={styles.titre}>QUIZ

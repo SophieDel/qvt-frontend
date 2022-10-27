@@ -19,8 +19,8 @@ function message() {
       fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log("data des messages" ,data.data[0].message);
-          setMessagesData(data.data);
+
+    setMessagesData(data.data);
           console.log(MessagesData);
         });
     }, []);
