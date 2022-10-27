@@ -23,17 +23,27 @@ function qhebdo() {
     const [NoteQ3, setNoteQ3] = useState(0);
     const [open, setOpen] = useState(false);
 
+
+
 const handleRegister = () => {
-    console.log (user.token)
+
+    //calcul du numéro de semaine pour envoi à collection
+    let currentdate = new Date();
+    var oneJan = new Date(currentdate.getFullYear(),0,1);
+    var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
+    let semaine=Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+    console.log (semaine)
+
+    
     fetch(`http://localhost:3000/users/Qhebdo/${user.token}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ Q1: NoteQ1, Q2: NoteQ2, Q3: NoteQ3 }),
+        body: JSON.stringify({ semaine : semaine, Q1: NoteQ1, Q2: NoteQ2, Q3: NoteQ3 }),
     })
     .then(response => response.json())
         .then(data => {
             console.log('data', data)
-                    if (data.result) {
+                    if (data) {
                 setNoteQ1(0);
                 setNoteQ2(0);
                 setNoteQ2(0);
