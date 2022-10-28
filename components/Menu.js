@@ -72,7 +72,8 @@ if (user.manager===true) {
 <Button href = "/dashboard" className={styles.liens}> Mon dashboard</Button></div>
 
 </div> */}
-
+<div className= {styles.menusection}>
+<div>
 <div className={styles.titre}>DASHBOARD
 <div>
 <div>
@@ -100,15 +101,17 @@ if (user.manager===true) {
 <Button href = "/reportings" className={styles.liens}> Mes reportings</Button></div>
 </div>
 
-{userSection}
 
+{userSection}
+</div>
 <div>
 <div className={styles.profil}>
 <FontAwesomeIcon className={styles.icon} icon ={faUser} />
 
-<Button href = "/profil" className={styles.liens}> {user.prenom}  {user.nom}Mon profil</Button>
+<Button href = "/profil" className={styles.liens}> {user.prenom}  {user.nom}<div>Mon profil</div></Button>
 
 
+</div>
 </div>
 </div>
     </div>

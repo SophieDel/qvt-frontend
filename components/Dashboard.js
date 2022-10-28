@@ -94,18 +94,16 @@ if (PlanData){ plans= PlanData.map((data, i) => {
       <Headerblanc />
       <div className={styles.contain}>
       <Menu />
-      <div className={styles.plan}>
-        <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
-          <div className={styles.articlesContainer}>{articles}</div>
+      <div className={styles.contenu}>
+      
+      <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
+      <div className={styles.articlesContainer}>{articles}</div>
+    
+    
+      <h2 className={styles.h2}>Les Plans de votre équipe en cours sont:</h2>
+      <div className={styles.planContainer}>{plans}</div>
+    
       </div>
-      </div>
-
-      <div className={styles.plan}>
-        <h2 className={styles.h2}>Les Plans de votre équipe en cours sont:</h2>
-          <div className={styles.articlesContainer}>{plans}</div>
-      </div>
-
-<div>
       </div>
       <Footerblanc />
     </div>
