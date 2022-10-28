@@ -5,6 +5,7 @@ import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import{count1} from '../reducers/count';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from "moment";
 
 
 function Plan(props) {
@@ -42,7 +43,7 @@ function Plan(props) {
     <div className={styles.container}>
       <div>
         <div className={styles.labeldate}>Date du plan: 
-        <div className={styles.date}>{props.datePlan}</div>
+        <div className={styles.date}>{moment(props.datePlan).format('DD-MM-YYYY')}</div>
       </div>
         <div className={styles.label}> 
         <div className={styles.messageenvoye}>{props.titre}</div>

@@ -5,6 +5,7 @@ import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import{count1} from '../reducers/count';
 import {useDispatch} from 'react-redux';
+import moment from "moment";
 
 
 function MessageManager(props) {
@@ -42,7 +43,7 @@ function MessageManager(props) {
     <div className={styles.container}>
       <div>
         <div className={styles.labeldate}>Date d'envoi: 
-        <div className={styles.date}>{props.dateRecep}</div>
+        <div className={styles.date}>{moment(props.dateRecep).format('DD-MM-YYYY')}</div>
       </div>
         <div className={styles.label}>Message envoyé: 
         <div className={styles.messageenvoye}>{props.message}</div>
