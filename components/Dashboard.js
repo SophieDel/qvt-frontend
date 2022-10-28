@@ -4,10 +4,14 @@ import styles from "../styles/Dashboard.module.css";
 import Headerblanc from './Headerblanc';
 import Footerblanc from './Footerblanc';
 import Menu from './Menu'
+import { useDispatch, useSelector } from 'react-redux';
+import Plan from "./Plan";
 
 const url = "http://localhost:3000";
 
 function Dashboard() {
+
+  const user = useSelector((state) => state.user.value);
   // const articlesData = [
   //   {
   //     _id: "6356815b2e605772ead184a0",
@@ -35,8 +39,11 @@ function Dashboard() {
 
   const [articlesData, setArticlesData] = useState([]);
 
-  // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
 
+
+
+  // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
+  
   useEffect(() => {
     fetch(`${url}/articles/${theme}`)
       .then((response) => response.json())
@@ -50,6 +57,38 @@ function Dashboard() {
     return <Article key={i} {...data} />;
   });
 
+ // import des plans actifs à l'initialisation,   
+
+ const [PlanData, setPlanData] = useState([]);
+
+ useEffect(() => {
+  fetch(`http://localhost:3000/messages/PlanEquipe/${user.equipe}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("les plans:",data)
+      setPlanData(data.data);
+    //   setCount(count+1)
+    });
+}, []);
+
+let plans
+if (PlanData){ plans= PlanData.map((data, i) => {
+  return <Plan key={i} {...data}  />;
+})} else {
+    plans =<></>
+};
+
+
+  // let planSection;
+  // if (derniereSemaine===semaine) {
+  //   qhebdoSection = (
+  //     <Button href = "/qhebdosaisi" className={styles.liens}> Quiz de la semaine</Button>
+  //   )}else {
+  //     qhebdoSection = (
+  //     <Button href = "/qhebdo" className={styles.liens}> Quiz de la semaine</Button>
+  //     )
+  //   };
+
   return (
     <div className={styles.main}>
       <Headerblanc />
@@ -59,6 +98,14 @@ function Dashboard() {
         <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
           <div className={styles.articlesContainer}>{articles}</div>
       </div>
+      </div>
+
+      <div className={styles.plan}>
+        <h2 className={styles.h2}>Les Plans de votre équipe en cours sont:</h2>
+          <div className={styles.articlesContainer}>{plans}</div>
+      </div>
+
+<div>
       </div>
       <Footerblanc />
     </div>
