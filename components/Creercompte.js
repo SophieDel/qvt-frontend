@@ -45,7 +45,7 @@ function Creercompte() {
             .then(data => {
         console.log('data', data)
                 if (data.result) {
-                    dispatch(login({token: data.token, equipe : data.equipe, manager: data.manager }))
+                    dispatch(login({prenom : data.prenom, nom : data.nom, token: data.token, equipe : data.equipe, manager: data.manager }))
                     // dispatch(login({ firstname: signUpFirstname, username: signUpUsername, token: data.token }));
                     setSignUpPrenom('');
                     setSignUpNom('');

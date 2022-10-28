@@ -7,8 +7,9 @@ import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import user from '../reducers/user';
+import count from '../reducers/count';
 
-const reducers = combineReducers({ user });
+const reducers = combineReducers({ user, count });
 const persistConfig = { key: 'qvtstore', storage };
 
 

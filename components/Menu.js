@@ -3,9 +3,15 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser} from "@fortawesome/free-solid-svg-icons"
 import { Button } from 'antd';
+import User from '../../qvt-backend/models/users';
+import { useSelector } from 'react-redux';
 
 
 function Menu() {
+
+const user =useSelector ((state) => state.user.value);
+console.log ("nom",user);
+
     return (
         <div className={styles.contain}>
             <div>
@@ -50,7 +56,7 @@ function Menu() {
 <div className={styles.profil}>
 <FontAwesomeIcon className={styles.icon} icon ={faUser} />
 
-<Button href = "/profil" className={styles.liens}> Mon profil</Button>
+<Button href = "/profil" className={styles.liens}> {user.prenom}  {user.nom}Mon profil</Button>
 
 
 </div>

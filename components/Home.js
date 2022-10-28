@@ -30,7 +30,7 @@ function Home() {
           console.log ("avant if", data)
             if (data.result) {
           
-                dispatch(login({token: data.token, equipe : data.equipe, manager: data.manager}));
+                dispatch(login({prenom : data.prenom, nom : data.nom, token: data.token, equipe : data.equipe, manager: data.manager}));
                 //, equipe: data.equipe, manager: data.manager
                 console.log(data)
                 console.log ("ok")

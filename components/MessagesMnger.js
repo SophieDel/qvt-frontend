@@ -3,16 +3,20 @@ import styles from "../styles/MessagesMnger.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { count } from "../../qvt-backend/models/messages";
+import{count1} from '../reducers/count';
+import {useDispatch} from 'react-redux';
 
 
 function MessageManager(props) {
     const [Reponse, setReponse] = useState('');
-    const [count, setCount] = useState(0);
+    
 
 
     const handleRepondre = () => {
+//tunnel mis en place pour remonter l'info qu'un message est saisi en réponse pour mise à jour de la page des message dans dashboard manager
+      props.compteur(props.message);
 
+      
         // console.log("reponse:" ,Reponse);
         fetch(`http://localhost:3000/messages/MessageReponse`, {
             method: 'POST',
@@ -22,10 +26,11 @@ function MessageManager(props) {
     })
     .then(response => response.json())
         .then(data => {
+        
             console.log ("data:" ,data)
                 if (data) {
                 setReponse('');
-                setCount(count+1)
+               
 
                     }else {
                   
