@@ -124,7 +124,7 @@ let modalContent = (
 let MessageSection;
 if (user.manager===false) {
   MessageSection = (
-<input type="text" placeholder="Message pour votre Manager" className={styles.input} onChange={(e) => setMessage(e.target.value)} value={Message} />
+<input type="text" placeholder="Message ou question pour votre Manager" className={styles.input} onChange={(e) => setMessage(e.target.value)} value={Message} />
   )};
 
 
@@ -136,23 +136,23 @@ return (
 <div className={styles.questionnaire}>
     <div className={styles.titre}>Merci de répondre au questionnaire hebdomadaire</div>
 <div className={styles.question}>
-<div className={styles.qtitre}>Sur une echelle de 1 à 10, comment evaluez-vous votre niveau de stress ?</div>
+<div className={styles.qtitre}>Sur une échelle de 1 à 10, comment evaluez-vous votre niveau de stress ?</div>
 <div className={styles.stars}>{Q1Stars} </div>
 </div>
 {/* <input type="text" placeholder="Note de 1 à 10" className={styles.input} onChange={(e) => setRepQ1(e.target.value)} value={RepQ1} /> */}
 <div className={styles.question}>
-<div className={styles.qtitre}>Sur une echelle de 1 à 10, comment évaluez-vous votre confiance en votre manager ? </div>
+<div className={styles.qtitre}>Sur une échelle de 1 à 10, comment évaluez-vous votre confiance en votre manager ? </div>
 <div className={styles.stars}>{Q2Stars} </div>
 </div>
 {/* <input type="text" placeholder="Note de 1 à 10" className={styles.input} onChange={(e) => setRepQ2(e.target.value)} value={RepQ2} />  */}
 <div className={styles.question}>
-<div className={styles.qtitre}>Sur une echelle de 1 à 10, comment évaluez-vous votre motivation ?</div> 
+<div className={styles.qtitre}>Sur une échelle de 1 à 10, comment évaluez-vous votre motivation ?</div> 
 <div className={styles.stars}>{Q3Stars} </div>
 {/* <input type="email" placeholder="Note de 1 à 10" className={styles.input} onChange={(e) => setRepQ3(e.target.value)} value={RepQ3} />  */}
-
-{MessageSection}
-
 </div>
+<div>{MessageSection}</div>
+
+
 <div className={styles.boutons}>
 <Button className={styles.btn} href = "/dashboard">Retour</Button>
 <Button className={styles.btn} onClick={() => handleRegister()}>Valider</Button>

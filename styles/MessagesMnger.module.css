@@ -1,0 +1,56 @@
+.main {
+    height: 100vh;
+    width: 100vw;
+}
+.container {
+    border-bottom: #79aea3 5px solid;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.messageenvoye {
+    font-style: italic;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.question {
+    font-weight: 400;
+}
+
+.date {
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.labeldate {
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.input {
+    height: 100px;
+    width: 600px;
+    font-size: 20px;
+    margin-right: 20px
+}
+
+.btn {
+    width: 200px ;
+    height: 50px;
+    border-radius: 20px;
+    color: #f0f0f0;
+    background-color: #79aea3;
+    border: 5px, solid, white;
+    cursor: pointer;
+    padding: 12px;
+    padding-left: 20px;
+    font-size: 20px;
+    margin: 50px;
+}
