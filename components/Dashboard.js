@@ -1,6 +1,9 @@
 import Article from "./Article";
 import { useEffect, useState } from "react";
 import styles from "../styles/Dashboard.module.css";
+import Headerblanc from './Headerblanc';
+import Footerblanc from './Footerblanc';
+import Menu from './Menu'
 
 const url = "http://localhost:3000";
 
@@ -48,9 +51,16 @@ function Dashboard() {
   });
 
   return (
-    <div>
-      <h2>Votre plan d'action personnalisé</h2>
-      <div className={styles.articlesContainer}>{articles}</div>
+    <div className={styles.main}>
+      <Headerblanc />
+      <div className={styles.contain}>
+      <Menu />
+      <div className={styles.plan}>
+        <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
+          <div className={styles.articlesContainer}>{articles}</div>
+      </div>
+      </div>
+      <Footerblanc />
     </div>
   );
 }

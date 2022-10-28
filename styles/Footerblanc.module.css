@@ -3,13 +3,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10vh;
+    height: 10%;
+    width: 100vw;
     color: #79aea3;
+    margin-top: 15px;
+    padding: 0px;
 }
 
 .liens {
     margin-right: 20px;
     text-align: end;
+    text-decoration: none;
 }
 
 .rs {
@@ -38,3 +42,4 @@
 .qvt {
     margin-left: 10px;
 }
+

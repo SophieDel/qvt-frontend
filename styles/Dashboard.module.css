@@ -1,10 +1,15 @@
-.main {
+/* .main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 4rem 0;
+  } */
+
+  .main {
+    height: 90vh;
+    width: 100vw;
   }
   
   .title {
@@ -23,9 +28,31 @@
 
   .articlesContainer{
     display: flex;
-    width: 60%;
+    width: 100%;
+    height: 100%;
     border: black 5px solid;
     flex-direction: column;
     align-items: flex-end;
-    padding: 20px
+    padding: 10px;
+    /* margin: 20px; */
+    margin-left: 20px;
+    margin-right: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .contain {
+    display: flex;
+    height: 93%;
+    margin: 0;
+  }
+
+  .plan {
+    height: 90%;
+    width: 100%;
+  }
+
+  .h2 {
+    margin-left: 40px;
+    /* padding: 10px; */
   }
