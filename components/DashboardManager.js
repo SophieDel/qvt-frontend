@@ -59,12 +59,20 @@ return (
     <Headerblanc />
 <div className={styles.contain}>
 <Menu />
-<div>
-        <input type="text" placeholder="titre Plan d'action" className={styles.input}onChange={(e) => setTitre(e.target.value)} value={titre}  />
-        <input type="text" placeholder="Plan d'action" className={styles.input}onChange={(e) => setPlan(e.target.value)} value={plan}  />
+<div className={styles.messplan}>
+<div className={styles.planContain}>
+<div className={styles.titre}>Plan d'action</div>
+<div className={styles.saisieplan}>
+        <input type="text" placeholder="Titre du plan d'action" className={styles.inputtitre}onChange={(e) => setTitre(e.target.value)} value={titre}  />
+        <input type="text" placeholder="Plan d'action" className={styles.inputplan}onChange={(e) => setPlan(e.target.value)} value={plan}  />
+        
         <button className={styles.btn} onClick={() => handleSoumettre()}>Envoyer</button>
         </div>
-<div className={styles.messagesContainer}>{messages}</div>
+</div>
+<div className={styles.messagesContainer}>
+  <div className={styles.titre}>Messages de votre équipe</div>
+  {messages}</div>
+</div>
 </div>
     <Footerblanc />
 </div>
