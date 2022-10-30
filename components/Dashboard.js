@@ -1,9 +1,11 @@
 import Article from "./Article";
 import { useEffect, useState } from "react";
 import styles from "../styles/Dashboard.module.css";
-import Headerblanc from './Headerblanc';
-import Footerblanc from './Footerblanc';
-import Menu from './Menu'
+import Headerblanc from "./Headerblanc";
+import Footerblanc from "./Footerblanc";
+import Menu from "./Menu";
+import { getKeyThenIncreaseKey } from "antd/lib/message";
+import { useSelector } from "react-redux";
 
 const url = "http://localhost:3000";
 
@@ -31,19 +33,34 @@ function Dashboard() {
   //   },
   // ];
 
-  let theme = "stress";
+  // let theme = "stress";
 
   const [articlesData, setArticlesData] = useState([]);
 
   // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
 
+  const user = useSelector((state) => state.user.value);
+  const token = user.token
+  // S'il n'y a pas de token, on en crée artificiellement un pour les test
+
   useEffect(() => {
-    fetch(`${url}/articles/${theme}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setArticlesData(data.articles);
-      });
+
+    // Display des articles aossiciés s'il y a un profil
+    if (user.profil) {
+      console.log("profil utilisateur : ", user.profil);
+      fetch(`${url}/articles/${user.profil}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setArticlesData(data.articles);
+        });
+    } else {
+      // S'il n'y a pas de profil on affiche tous les articles
+      fetch(`${url}/articles/`)
+        .then((response) => response.json())
+        .then((data) => {
+          setArticlesData(data.articles);
+        });
+    }
   }, []);
 
   const articles = articlesData.map((data, i) => {
@@ -54,11 +71,11 @@ function Dashboard() {
     <div className={styles.main}>
       <Headerblanc />
       <div className={styles.contain}>
-      <Menu />
-      <div className={styles.plan}>
-        <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
+        <Menu />
+        <div className={styles.plan}>
+          <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
           <div className={styles.articlesContainer}>{articles}</div>
-      </div>
+        </div>
       </div>
       <Footerblanc />
     </div>

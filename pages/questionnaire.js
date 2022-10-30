@@ -3,16 +3,16 @@ import Link from "next/link";
 import Headervert from "../components/Headervert";
 import Footervert from "../components/Footervert";
 import * as inituleQuestions from "../public/intituleQuestionsPerso.json";
+// inituleQuestions = require("../public/intituleQuestionsPerso.json")
 import Question from "../components/Question";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  clearReponses } from "../reducers/user";
+import {  clearReponses, updateProfil } from "../reducers/user";
 
 const url = "http://localhost:3000";
 
 function Questionnaire() {
   const user = useSelector((state) => state.user.value);
-  console.log(user.reponses);
   const dispatch = useDispatch();
 
   // A l'initialisation de la page, on veut cleaner le tore
@@ -20,17 +20,22 @@ function Questionnaire() {
     dispatch(clearReponses());
   }, []);
 
+  function transformObjectToArrayOfObjects(ob) {
+    return Object.keys(ob).map(key => {
+      return ({[key]: ob[key]})
+      })
+  }
+
   const handleSubmit = () => {
-    console.log("submit", user.reponses);
+
     fetch(`${url}/questionnaire/reponses`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reponses: Array.from(user.reponses) }),
-      // body: JSON.stringify({ reponses: [{ 1: "a", 2: "b" }] }),
+      body: JSON.stringify({ reponses: transformObjectToArrayOfObjects(user.reponses) }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("request response =>", data);
+        dispatch(updateProfil(data.profil))
       });
       // Une fois les réponses enregistrées, on est redirigé automatiquement vers le dashboard
       window.location.href = "/dashboard"
