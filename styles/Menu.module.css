@@ -30,6 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 80px;
 }
 
 .icon {
@@ -44,4 +45,11 @@
     font-weight: 400;
     padding-left: 15px;
     padding-top: 10px;
+}
+
+.menusection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
 }
