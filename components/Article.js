@@ -5,14 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Article(props) {
-  const handleOpenArticle = () => {
-    console.log("click");
-    // window.location.replace(props.lien);
-    window.open(props.lien, "_blank", "noopener,noreferrer");
-  };
+  // const handleOpenArticle = () => {
+  //   console.log("click");
+  //   // window.location.replace(props.lien);
+  //   window.open(props.lien, "_blank", "noopener,noreferrer");
+  // };
   
-  console.log( "type props.lien", typeof(props.lien))
-  console.log(typeof(props.lien) == "string")
+  // console.log( "type props.lien", typeof(props.lien))
+  // console.log(typeof(props.lien) == "string")
 
   return (
     <div className={styles.articles}>

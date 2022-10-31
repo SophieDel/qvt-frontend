@@ -11,7 +11,6 @@ const url = "http://localhost:3000";
 
 function Dashboard() {
 
-  const user = useSelector((state) => state.user.value);
   // const articlesData = [
   //   {
   //     _id: "6356815b2e605772ead184a0",
@@ -35,7 +34,7 @@ function Dashboard() {
   //   },
   // ];
 
-  let theme = "stress";
+  // let theme = "stress";
 
   const [articlesData, setArticlesData] = useState([]);
   const [PlanData, setPlanData] = useState([]);
@@ -47,16 +46,29 @@ function Dashboard() {
 
 
 
+  const user = useSelector((state) => state.user.value);
+  const token = user.token
 
   // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
   
   useEffect(() => {
-    fetch(`${url}/articles/${theme}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setArticlesData(data.articles);
-      });
+
+    // Display des articles aossiciés s'il y a un profil
+    if (user.profil) {
+      console.log("profil utilisateur : ", user.profil);
+      fetch(`${url}/articles/${user.profil}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setArticlesData(data.articles);
+        });
+    } else {
+      // S'il n'y a pas de profil on affiche tous les articles
+      fetch(`${url}/articles/`)
+        .then((response) => response.json())
+        .then((data) => {
+          setArticlesData(data.articles);
+        });
+    }
   }, []);
 
   const articles = articlesData.map((data, i) => {

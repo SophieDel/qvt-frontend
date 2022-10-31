@@ -30,6 +30,9 @@ export const userSlice = createSlice({
       // Les réponses aux questions doivent être mises dans un tableau - même s'il n'y a qu'une seule réponse
       state.value.reponses = {};
     },
+    updateProfil: (state, action) => {
+      state.value.profil = action.payload
+    }
   },
 });
 
