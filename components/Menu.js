@@ -76,8 +76,8 @@ if (user.manager===true) {
 <Button href = "/dashboard" className={styles.liens}> Mon dashboard</Button></div>
 
 </div> */}
+
 <div className= {styles.menusection}>
-<div>
 <div className={styles.titre}>DASHBOARD
 <div>
 <div>
@@ -108,14 +108,13 @@ if (user.manager===true) {
 
 {userSection}
 </div>
-<div>
+<div className= {styles.menusection}>
 <div className={styles.profil}>
 <FontAwesomeIcon className={styles.icon} icon ={faUser} />
 
 <Button href = "/profil" className={styles.liens}> {user.prenom}  {user.nom}<div>Mon profil</div></Button>
 
 
-</div>
 </div>
 </div>
     </div>
