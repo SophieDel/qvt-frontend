@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser} from "@fortawesome/free-solid-svg-icons"
 import { Button } from 'antd';
-import User from '../../qvt-backend/models/users';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import defaultRenderEmpty from 'antd/lib/config-provider/defaultRenderEmpty';
