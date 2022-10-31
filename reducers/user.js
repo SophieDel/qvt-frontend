@@ -36,5 +36,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout, updateReponses, clearReponses } = userSlice.actions;
+export const { login, logout, updateReponses, clearReponses, updateProfil } = userSlice.actions;
 export default userSlice.reducer;
