@@ -1,4 +1,4 @@
-import styles from '../styles/Profil.module.css';
+coimport styles from '../styles/Profil.module.css';
 import Link from 'next/link';
 import Headerblanc from './Headerblanc';
 import Footerblanc from './Footerblanc';
