@@ -20,20 +20,7 @@ function profil() {
     const user = useSelector((state) => state.user.value);
     const [MessagesData, setMessagesData] = useState([]);
 
-    // Display des messages  à l'initialisation,   
-    useEffect(() => {
-      fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("data des messages" ,data.data[0].message);
-          setMessagesData(data.data);
-          console.log(MessagesData);
-        });
-    }, []);
-  
-    const messages = MessagesData.map((data, i) => {
-      return <MessageCollab key={i} {...data} />;
-    });
+
     
 return (
     <div className={styles.main}>
