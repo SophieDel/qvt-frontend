@@ -1,0 +1,40 @@
+.contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.titre {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.btnaccederquest {
+    width: 200px ;
+    height: 80px;
+    border-radius: 20px;
+    color: #f0f0f0;
+    background-color: #79aea3;
+    border: 5px, solid, white;
+    cursor: pointer;
+    padding: 12px;
+    padding-left: 20px;
+    font-size: 20px;
+    margin: 50px;
+}
+
+.phantom {
+    display: 'block';
+    padding: 20px;
+    height: 200px;
+    width: 100%;
+  } 
+
+.container {
+    display: "flex";
+    flex-direction: column;
+    justify-content: end;
+}
