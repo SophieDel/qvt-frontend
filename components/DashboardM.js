@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import MessageManager from "./MessagesMnger";
 
-const URL_BACKEND = require("../modules/url_ backend");
+const URL_BACKEND = require("../modules/url_backend");
 
 function DashboardM() {
 

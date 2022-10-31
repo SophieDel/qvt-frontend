@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import defaultRenderEmpty from 'antd/lib/config-provider/defaultRenderEmpty';
 
-const URL_BACKEND = require("../modules/url_ backend");
+const URL_BACKEND = require("../modules/url_backend");
 
 function Menu() {
 
@@ -21,17 +21,20 @@ let currentdate = new Date();
         var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
         let semaine=Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
 
-  // récupération de la semaine de saisie du dernier questionnaire,   
-  useEffect(() => {
-    fetch(`${URL_BACKEND}/users/semaine/${user.token}`)
-      .then((response) => response.json())
-      .then((data) => {
-if(data.data.length>0){
-setDerniereSemaine (data.data[(data.data.length)-1].semaine)}
-else  { setDerniereSemaine(0) }
+  // récupération de la semaine de saisie du dernier questionnaire,
+  if (user.token){
+    useEffect(() => {
+      fetch(`${URL_BACKEND}/users/semaine/${user.token}`)
+        .then((response) => response.json())
+        .then((data) => {
+  if(data.data.length>0){
+  setDerniereSemaine (data.data[(data.data.length)-1].semaine)}
+  else  { setDerniereSemaine(0) }
+  
+        });
+    }, []);
+  }   
 
-      });
-  }, []);
 
    
 

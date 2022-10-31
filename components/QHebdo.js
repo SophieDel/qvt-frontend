@@ -15,7 +15,7 @@ import Menu from './Menu'
 import moment from 'moment';
 // import DateTime from 'luxon/src/datetime.js'
 
-const URL_BACKEND = require("../modules/url_ backend");
+const URL_BACKEND = require("../modules/url_backend");
 
 function qhebdo() {
     const dispatch = useDispatch();

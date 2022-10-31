@@ -7,7 +7,7 @@ import{count1} from '../reducers/count';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from "moment";
 
-const URL_BACKEND = require("../modules/url_ backend");
+const URL_BACKEND = require("../modules/url_backend");
 
 function Plan(props) {
     const [Reponse, setReponse] = useState('');

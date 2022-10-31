@@ -9,7 +9,7 @@ import 'reactjs-popup/dist/index.css';
 import Menu from './Menu'
 import MessageCollab from "./MessagesCollab";
 
-const URL_BACKEND = require("../modules/url_ backend");
+const URL_BACKEND = require("../modules/url_backend");
 
 function message() {
 

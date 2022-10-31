@@ -9,7 +9,7 @@ import { login} from '../reducers/user';
 import 'reactjs-popup/dist/index.css';
 import { Modal, Button, Space } from 'antd';
 
-const URL_BACKEND = require("../modules/url_ backend");
+const URL_BACKEND = require("../modules/url_backend");
 
 function Home() {
 

@@ -10,7 +10,7 @@ import Menu from './Menu'
 import MessageManager from "./MessagesMnger";
 import{count1} from '../reducers/count';
 
-const URL_BACKEND = require("../modules/url_ backend");
+const URL_BACKEND = require("../modules/url_backend");
 
 function DashboardManager() {
 
