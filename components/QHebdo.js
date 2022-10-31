@@ -12,7 +12,8 @@ import { Modal, Button, Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu'
-import Message from '../../qvt-backend/models/messages';
+import moment from 'moment';
+// import DateTime from 'luxon/src/datetime.js'
 
 const URL_BACKEND = require("../modules/url_ backend");
 
@@ -28,14 +29,21 @@ function qhebdo() {
     const [NoteQ3, setNoteQ3] = useState(0);
     const [open, setOpen] = useState(false);
 
-    const handleRegister = () => {
 
         //calcul du numéro de semaine pour envoi à collection
+   
+
+        
         let currentdate = new Date();
         var oneJan = new Date(currentdate.getFullYear(),0,1);
         var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
-        let semaine=Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+        // let semaine=Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+        const semaine = moment(moment().toDate(), "MM-DD-YYYY").isoWeek()
         console.log (semaine)
+
+    const handleRegister = () => {
+
+
    
    
    //on n'envoie un message que si il a été saisi

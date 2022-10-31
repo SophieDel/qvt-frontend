@@ -39,11 +39,10 @@ function Dashboard() {
   const [articlesData, setArticlesData] = useState([]);
   const [PlanData, setPlanData] = useState([]);
   const [Q1, setQ1] = useState(null);
-  const [Q1S1, setQ1S1] = useState(null);
   const [Q2, setQ2] = useState(null);
   const [Q3, setQ3] = useState(null);
   const [derniereSemaine, setDerniereSemaine] = useState(null);
-  const [derniereSemaineS1, setDerniereSemaineS1] = useState(null);
+
 
   // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
 
@@ -81,21 +80,20 @@ function Dashboard() {
     plans = <></>;
   }
 
-  //Le mood de la semaine
-  useEffect(() => {
-    fetch(`${URL_BACKEND}/users/Qsemaine/${user.token}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("le mood:", data.data[data.data.length - 1]);
-        setQ1(data.data[data.data.length - 1].Q1);
-        setQ1S1(data.data[data.data.length - 2].Q1);
-        setQ2(data.data[data.data.length - 1].Q2);
-        setQ3(data.data[data.data.length - 1].Q3);
-        setDerniereSemaine(data.data[data.data.length - 1].semaine);
-        setDerniereSemaineS1(data.data[data.data.length - 2].semaine);
-        //   setCount(count+1)
-      });
-  }, []);
+//Le mood de la semaine
+useEffect(() => {
+  fetch(`${URL_BACKEND}/users/Qsemaine/${user.token}`)
+    .then((response) => response.json())
+    .then((data) =>{ if ([(data.data.length)]>0){
+      console.log("le mood:",data.data[(data.data.length)-1])
+      setQ1(data.data[(data.data.length)-1].Q1);
+      setQ2(data.data[(data.data.length)-1].Q2);
+      setQ3(data.data[(data.data.length)-1].Q3);
+      setDerniereSemaine(data.data[(data.data.length)-1].semaine)
+    } else {}
+    //   setCount(count+1)
+    });
+}, []);
 
   // let planSection;
   // if (derniereSemaine===semaine) {
@@ -111,26 +109,22 @@ function Dashboard() {
     <div className={styles.main}>
       <Headerblanc />
       <div className={styles.contain}>
-        <Menu />
-        <div className={styles.contenu}>
-          <h2 className={styles.h2}>
-            Votre mood de la semaine {derniereSemaine}
-          </h2>
-          <div>
-            Question 1: semaine {derniereSemaine} {Q1}, semaine{" "}
-            {derniereSemaineS1} {Q1S1}{" "}
-          </div>
-          <div>Question 2: {Q2}</div>
-          <div>Question 3: {Q3}</div>
-
-          <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
-          <div className={styles.articlesContainer}>{articles}</div>
-
-          <h2 className={styles.h2}>
-            Les Plans de votre équipe en cours sont:
-          </h2>
-          <div className={styles.planContainer}>{plans}</div>
+      <Menu />
+      <div className={styles.contenu}>
+      <h2 className={styles.h2}>Votre mood de la semaine {derniereSemaine}</h2>
+         <div className={styles.mood}>
+          <div>Votre niveau de stress: {Q1}/10 </div>
+          <div>Confiance en votre manager: {Q2}/10</div>
+          <div>Votre niveau de motivation: {Q3}/10</div>
         </div>
+      <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
+      <div className={styles.articlesContainer}>{articles}</div>
+    
+    
+      <h2 className={styles.h2}>Les Plans de votre équipe en cours sont:</h2>
+      <div className={styles.planContainer}>{plans}</div>
+    
+      </div>
       </div>
       <Footerblanc />
     </div>
