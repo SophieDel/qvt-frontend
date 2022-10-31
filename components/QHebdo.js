@@ -14,6 +14,8 @@ import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu'
 import Message from '../../qvt-backend/models/messages';
 
+const URL_BACKEND = require("../modules/url_ backend");
+
 function qhebdo() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.value);
@@ -39,7 +41,7 @@ function qhebdo() {
    //on n'envoie un message que si il a été saisi
         if(Message===''){}
         else{
-        fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`, {
+        fetch(`${URL_BACKEND}/messages/MessageCollab/${user.token}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: Message}),
@@ -60,7 +62,7 @@ function qhebdo() {
 
 
         //reponse au questionnaire hebdo
-        fetch(`http://localhost:3000/users/Qhebdo/${user.token}`, {
+        fetch(`${URL_BACKEND}/users/Qhebdo/${user.token}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ semaine : semaine, Q1: NoteQ1, Q2: NoteQ2, Q3: NoteQ3 }),

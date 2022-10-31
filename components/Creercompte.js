@@ -10,6 +10,8 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Modal, Button, Space } from 'antd';
 
+const URL_BACKEND = require("../modules/url_ backend");
+
 
 function Creercompte() {
     const dispatch = useDispatch();
@@ -36,7 +38,7 @@ function Creercompte() {
     const handleRegister = () => {
         if (EMAIL_REGEX.test(signUpEmail)) {
             console.log("boucle regex")
-        fetch('http://localhost:3000/users/signup', {
+        fetch(`${URL_BACKEND}/users/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ genre: signUpGenre, prenom: signUpPrenom, nom: signUpNom, email: signUpEmail, mdp: signUpMdp, poste: signUpPoste, equipe: signUpEquipe, service: signUpService, cgu: true, manager: signUpManager, RGPDqvt: signUpQvt, RGPDParternaire: signUpPartenaire }),

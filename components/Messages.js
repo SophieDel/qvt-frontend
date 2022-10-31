@@ -9,6 +9,8 @@ import 'reactjs-popup/dist/index.css';
 import Menu from './Menu'
 import MessageCollab from "./MessagesCollab";
 
+const URL_BACKEND = require("../modules/url_ backend");
+
 function message() {
 
     const user = useSelector((state) => state.user.value);
@@ -16,7 +18,7 @@ function message() {
 
     // Display des messages  à l'initialisation,   
     useEffect(() => {
-      fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`)
+      fetch(`${URL_BACKEND}/messages/MessageCollab/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
 

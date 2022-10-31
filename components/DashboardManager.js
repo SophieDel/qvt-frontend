@@ -10,6 +10,8 @@ import Menu from './Menu'
 import MessageManager from "./MessagesMnger";
 import{count1} from '../reducers/count';
 
+const URL_BACKEND = require("../modules/url_ backend");
+
 function DashboardManager() {
 
     const user = useSelector((state) => state.user.value);
@@ -25,7 +27,7 @@ function DashboardManager() {
 
     // Mise à) jour des messages apres la réponse du manager,   
     useEffect(() => {
-      fetch(`http://localhost:3000/messages/MessageEquipe/${user.equipe}`)
+      fetch(`${URL_BACKEND}/messages/MessageEquipe/${user.equipe}`)
         .then((response) => response.json())
         .then((data) => {
 
@@ -45,7 +47,7 @@ function DashboardManager() {
 
     const handleSoumettre = () => {
 
-      fetch(`http://localhost:3000/messages/PlanManager/${user.token}` , {
+      fetch(`${URL_BACKEND}/messages/PlanManager/${user.token}` , {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ titre: titre, message: plan }),

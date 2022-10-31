@@ -15,6 +15,8 @@ import Menu from './Menu'
 import MessageCollab from "./MessagesCollab";
 import Message from '../../qvt-backend/models/messages';
 
+const URL_BACKEND = require("../modules/url_ backend");
+
 function profil() {
 
     const user = useSelector((state) => state.user.value);
@@ -22,7 +24,7 @@ function profil() {
 
     // Display des messages  à l'initialisation,   
     useEffect(() => {
-      fetch(`http://localhost:3000/messages/MessageCollab/${user.token}`)
+      fetch(`${URL_BACKEND}/messages/MessageCollab/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("data des messages" ,data.data[0].message);

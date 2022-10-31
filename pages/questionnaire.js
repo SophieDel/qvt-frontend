@@ -6,9 +6,9 @@ import * as inituleQuestions from "../public/intituleQuestionsPerso.json";
 import Question from "../components/Question";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  clearReponses } from "../reducers/user";
+import { clearReponses } from "../reducers/user";
 
-const url = "http://localhost:3000";
+const URL_BACKEND = require("../modules/url_ backend");
 
 function Questionnaire() {
   const user = useSelector((state) => state.user.value);
@@ -22,7 +22,7 @@ function Questionnaire() {
 
   const handleSubmit = () => {
     console.log("submit", user.reponses);
-    fetch(`${url}/questionnaire/reponses`, {
+    fetch(`${URL_BACKEND}/questionnaire/reponses`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ reponses: Array.from(user.reponses) }),
@@ -32,8 +32,8 @@ function Questionnaire() {
       .then((data) => {
         console.log("request response =>", data);
       });
-      // Une fois les réponses enregistrées, on est redirigé automatiquement vers le dashboard
-      window.location.href = "/dashboard"
+    // Une fois les réponses enregistrées, on est redirigé automatiquement vers le dashboard
+    window.location.href = "/dashboard";
   };
 
   const questions = inituleQuestions.map((data, i) => {

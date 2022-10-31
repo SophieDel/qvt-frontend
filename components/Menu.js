@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import defaultRenderEmpty from 'antd/lib/config-provider/defaultRenderEmpty';
 
+const URL_BACKEND = require("../modules/url_ backend");
 
 function Menu() {
 
@@ -22,7 +23,7 @@ let currentdate = new Date();
 
   // récupération de la semaine de saisie du dernier questionnaire,   
   useEffect(() => {
-    fetch(`http://localhost:3000/users/semaine/${user.token}`)
+    fetch(`${URL_BACKEND}/users/semaine/${user.token}`)
       .then((response) => response.json())
       .then((data) => {
 if(data.data.length>0){

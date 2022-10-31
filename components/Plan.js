@@ -7,6 +7,7 @@ import{count1} from '../reducers/count';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from "moment";
 
+const URL_BACKEND = require("../modules/url_ backend");
 
 function Plan(props) {
     const [Reponse, setReponse] = useState('');
@@ -19,7 +20,7 @@ function Plan(props) {
 
       
 //         // console.log("reponse:" ,Reponse);
-//         fetch(`http://localhost:3000/PlanEquipe/${user.equipe}`, {
+//         fetch(`${URL_BACKEND}/PlanEquipe/${user.equipe}`, {
 //             method: 'POST',
 //             headers: { 'Content-Type': 'application/json' },
 //             body: JSON.stringify({ message : props.message , reponse: Reponse}),
