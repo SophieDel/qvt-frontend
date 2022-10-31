@@ -1,16 +1,15 @@
 import Article from "./Article";
 import { useEffect, useState } from "react";
 import styles from "../styles/Dashboard.module.css";
-import Headerblanc from './Headerblanc';
-import Footerblanc from './Footerblanc';
-import Menu from './Menu'
-import { useDispatch, useSelector } from 'react-redux';
+import Headerblanc from "./Headerblanc";
+import Footerblanc from "./Footerblanc";
+import Menu from "./Menu";
+import { useDispatch, useSelector } from "react-redux";
 import Plan from "./Plan";
 
-const url = "http://localhost:3000";
+const URL_BACKEND = require("../modules/url_backend");
 
 function Dashboard() {
-
   // const articlesData = [
   //   {
   //     _id: "6356815b2e605772ead184a0",
@@ -50,20 +49,19 @@ function Dashboard() {
   const token = user.token
 
   // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
-  
+
   useEffect(() => {
 
     // Display des articles aossiciés s'il y a un profil
     if (user.profil) {
-      console.log("profil utilisateur : ", user.profil);
-      fetch(`${url}/articles/${user.profil}`)
+      fetch(`${URL_BACKEND}/articles/${user.profil}`)
         .then((response) => response.json())
         .then((data) => {
           setArticlesData(data.articles);
         });
     } else {
       // S'il n'y a pas de profil on affiche tous les articles
-      fetch(`${url}/articles/`)
+      fetch(`${URL_BACKEND}/articles/`)
         .then((response) => response.json())
         .then((data) => {
           setArticlesData(data.articles);
@@ -75,41 +73,45 @@ function Dashboard() {
     return <Article key={i} {...data} />;
   });
 
- // import des plans actifs à l'initialisation,   
+  // import des plans actifs à l'initialisation,
 
- useEffect(() => {
-  fetch(`http://localhost:3000/messages/PlanEquipe/${user.equipe}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("les plans:",data)
-      setPlanData(data.data);
-    //   setCount(count+1)
+  useEffect(() => {
+    fetch(`${URL_BACKEND}/messages/PlanEquipe/${user.equipe}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("les plans:", data);
+        setPlanData(data.data);
+        //   setCount(count+1)
+      });
+  }, []);
+
+  let plans;
+  if (PlanData) {
+    plans = PlanData.map((data, i) => {
+      return <Plan key={i} {...data} />;
     });
-}, []);
-
-let plans
-if (PlanData){ plans= PlanData.map((data, i) => {
-  return <Plan key={i} {...data}  />;
-})} else {
-    plans =<></>
-};
-
+  } else {
+    plans = <></>;
+  }
 
 //Le mood de la semaine
+if (user.token){
 useEffect(() => {
-  fetch(`http://localhost:3000/users/Qsemaine/${user.token}`)
+  fetch(`${URL_BACKEND}/users/Qsemaine/${user.token}`)
     .then((response) => response.json())
-    .then((data) =>{ if ([(data.data.length)]>0){
-      console.log("le mood:",data.data[(data.data.length)-1])
-      setQ1(data.data[(data.data.length)-1].Q1);
-      setQ2(data.data[(data.data.length)-1].Q2);
-      setQ3(data.data[(data.data.length)-1].Q3);
-      setDerniereSemaine(data.data[(data.data.length)-1].semaine)
-    } else {}
-    //   setCount(count+1)
-    });
-}, []);
-
+      .then((data) => {
+        if ([data.data.length] > 0) {
+          console.log("le mood:", data.data[data.data.length - 1]);
+          setQ1(data.data[data.data.length - 1].Q1);
+          setQ2(data.data[data.data.length - 1].Q2);
+          setQ3(data.data[data.data.length - 1].Q3);
+          setDerniereSemaine(data.data[data.data.length - 1].semaine);
+        } else {
+        }
+        //   setCount(count+1)
+      });
+  }, []);
+}
 
   // let planSection;
   // if (derniereSemaine===semaine) {
@@ -125,22 +127,24 @@ useEffect(() => {
     <div className={styles.main}>
       <Headerblanc />
       <div className={styles.contain}>
-      <Menu />
-      <div className={styles.contenu}>
-      <h2 className={styles.h2}>Votre mood de la semaine {derniereSemaine}</h2>
-         <div className={styles.mood}>
-          <div>Votre niveau de stress: {Q1}/10 </div>
-          <div>Confiance en votre manager: {Q2}/10</div>
-          <div>Votre niveau de motivation: {Q3}/10</div>
+        <Menu />
+        <div className={styles.contenu}>
+          <h2 className={styles.h2}>
+            Votre mood de la semaine {derniereSemaine}
+          </h2>
+          <div className={styles.mood}>
+            <div>Votre niveau de stress: {Q1}/10 </div>
+            <div>Confiance en votre manager: {Q2}/10</div>
+            <div>Votre niveau de motivation: {Q3}/10</div>
+          </div>
+          <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
+          <div className={styles.articlesContainer}>{articles}</div>
+
+          <h2 className={styles.h2}>
+            Les Plans de votre équipe en cours sont:
+          </h2>
+          <div className={styles.planContainer}>{plans}</div>
         </div>
-      <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
-      <div className={styles.articlesContainer}>{articles}</div>
-    
-    
-      <h2 className={styles.h2}>Les Plans de votre équipe en cours sont:</h2>
-      <div className={styles.planContainer}>{plans}</div>
-    
-      </div>
       </div>
       <Footerblanc />
     </div>

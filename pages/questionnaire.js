@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  clearReponses, updateProfil } from "../reducers/user";
 
-const url = "http://localhost:3000";
+const URL_BACKEND = require("../modules/url_backend");
 
 function Questionnaire() {
   const user = useSelector((state) => state.user.value);
@@ -28,7 +28,7 @@ function Questionnaire() {
 
   const handleSubmit = () => {
 
-    fetch(`${url}/questionnaire/reponses`, {
+    fetch(`${URL_BACKEND}/questionnaire/reponses`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ reponses: transformObjectToArrayOfObjects(user.reponses) }),
@@ -37,8 +37,8 @@ function Questionnaire() {
       .then((data) => {
         dispatch(updateProfil(data.profil))
       });
-      // Une fois les réponses enregistrées, on est redirigé automatiquement vers le dashboard
-      window.location.href = "/dashboard"
+    // Une fois les réponses enregistrées, on est redirigé automatiquement vers le dashboard
+    window.location.href = "/dashboard";
   };
 
   const questions = inituleQuestions.map((data, i) => {

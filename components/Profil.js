@@ -15,6 +15,8 @@ import Menu from './Menu'
 import MessageCollab from "./MessagesCollab";
 import Message from '../../qvt-backend/models/messages';
 
+const URL_BACKEND = require("../modules/url_backend");
+
 function profil() {
 
     const user = useSelector((state) => state.user.value);

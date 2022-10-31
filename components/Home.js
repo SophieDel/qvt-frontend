@@ -9,6 +9,7 @@ import { login} from '../reducers/user';
 import 'reactjs-popup/dist/index.css';
 import { Modal, Button, Space } from 'antd';
 
+const URL_BACKEND = require("../modules/url_backend");
 
 function Home() {
 
@@ -21,7 +22,7 @@ function Home() {
 
   const handleConnection = () => {
 
-    fetch('http://localhost:3000/users/signin' , {
+    fetch(`${URL_BACKEND}/users/signin` , {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: signInEmail, mdp: signInPassword }),

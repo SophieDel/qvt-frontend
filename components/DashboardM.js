@@ -11,6 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import MessageManager from "./MessagesMnger";
 
+const URL_BACKEND = require("../modules/url_backend");
+
 function DashboardM() {
 
     const user = useSelector((state) => state.user.value);
@@ -21,7 +23,7 @@ function DashboardM() {
     const handleRepondre = () => {
 
         // console.log("reponse:" ,Reponse);
-        fetch(`http://localhost:3000/messages/MessageReponse`, {
+        fetch(`${URL_BACKEND}/messages/MessageReponse`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message : props.message , reponse: Reponse}),
@@ -60,7 +62,7 @@ function DashboardM() {
 
     // Display des messages  à l'initialisation,   
     useEffect(() => {
-      fetch(`http://localhost:3000/messages/MessageEquipe/${user.equipe}`)
+      fetch(`${URL_BACKEND}/messages/MessageEquipe/${user.equipe}`)
         .then((response) => response.json())
         .then((data) => {
   
