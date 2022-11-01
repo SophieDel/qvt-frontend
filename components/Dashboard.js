@@ -42,16 +42,12 @@ function Dashboard() {
   const [Q3, setQ3] = useState(null);
   const [derniereSemaine, setDerniereSemaine] = useState(null);
 
-
-
-
   const user = useSelector((state) => state.user.value);
-  const token = user.token
+  const token = user.token;
 
   // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
 
   useEffect(() => {
-
     // Display des articles aossiciés s'il y a un profil
     if (user.profil) {
       fetch(`${URL_BACKEND}/articles/${user.profil}`)
@@ -94,24 +90,24 @@ function Dashboard() {
     plans = <></>;
   }
 
-//Le mood de la semaine
-if (user.token){
-useEffect(() => {
-  fetch(`${URL_BACKEND}/users/Qsemaine/${user.token}`)
-    .then((response) => response.json())
-      .then((data) => {
-        if ([data.data.length] > 0) {
-          console.log("le mood:", data.data[data.data.length - 1]);
-          setQ1(data.data[data.data.length - 1].Q1);
-          setQ2(data.data[data.data.length - 1].Q2);
-          setQ3(data.data[data.data.length - 1].Q3);
-          setDerniereSemaine(data.data[data.data.length - 1].semaine);
-        } else {
-        }
-        //   setCount(count+1)
-      });
-  }, []);
-}
+  //Le mood de la semaine
+  if (user.token) {
+    useEffect(() => {
+      fetch(`${URL_BACKEND}/users/Qsemaine/${user.token}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if ([data.data.length] > 0) {
+            console.log("le mood:", data.data[data.data.length - 1]);
+            setQ1(data.data[data.data.length - 1].Q1);
+            setQ2(data.data[data.data.length - 1].Q2);
+            setQ3(data.data[data.data.length - 1].Q3);
+            setDerniereSemaine(data.data[data.data.length - 1].semaine);
+          } else {
+          }
+          //   setCount(count+1)
+        });
+    }, []);
+  }
 
   // let planSection;
   // if (derniereSemaine===semaine) {

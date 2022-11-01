@@ -1,5 +1,4 @@
 import styles from "../styles/Questionnaire.module.css";
-import Link from "next/link";
 import Headervert from "../components/Headervert";
 import Footervert from "../components/Footervert";
 import * as inituleQuestions from "../public/intituleQuestionsPerso.json";
@@ -15,10 +14,13 @@ function Questionnaire() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
 
-  // A l'initialisation de la page, on veut cleaner le tore
-  useEffect(() => {
-    dispatch(clearReponses());
-  }, []);
+  // A l'initialisation de la page, on veut cleaner le store
+  if (user.profil === null){
+    useEffect(() => {
+      dispatch(clearReponses());
+    }, []);
+  }
+
 
   function transformObjectToArrayOfObjects(ob) {
     return Object.keys(ob).map(key => {
