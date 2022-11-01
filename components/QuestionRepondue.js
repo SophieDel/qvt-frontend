@@ -1,14 +1,21 @@
-import styles from "../styles/QuestionRepondue.module.css";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateReponses } from "../reducers/user";
+import Select from "@mui/material/Select";
 
-function Question(props) {
+function QuestionRepondue(props) {
 
-  const user = useSelector((state) => state.user.value);
+  return (
+    <FormControl style={{padding: 3, width: "fit-content"}}>
+      <p>{props.question}</p>
+      <Select
+        value={props.reponse}
+      >
+       <MenuItem value={props.reponse}>{props.reponse}
+       </MenuItem>
+      </Select>
+    </FormControl>
+  )
 
 }
+
+export default QuestionRepondue;
