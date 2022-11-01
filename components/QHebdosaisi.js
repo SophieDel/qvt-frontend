@@ -12,7 +12,6 @@ import { Modal, Button, Space } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu'
-import Message from '../../qvt-backend/models/messages';
 
 function qhebdosaisi() {
    

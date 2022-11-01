@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu'
 import MessageCollab from "./MessagesCollab";
-import Message from '../../qvt-backend/models/messages';
 
 const URL_BACKEND = require("../modules/url_backend");
 

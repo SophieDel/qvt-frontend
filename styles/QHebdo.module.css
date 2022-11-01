@@ -1,7 +1,7 @@
 .main {
     height: 90vh;
     width: 100vw;
-} 
+}
 
 .contain {
     display: flex;
@@ -32,7 +32,7 @@
 }
 
 .btnvalider {
-    width: 200px ;
+    width: 200px;
     height: 50px;
     border-radius: 20px;
     color: #f0f0f0;
@@ -47,7 +47,7 @@
 }
 
 .btn {
-    width: 200px ;
+    width: 200px;
     height: 50px;
     border-radius: 20px;
     color: #f0f0f0;
@@ -75,6 +75,7 @@
     justify-content: space-around;
 
 }
+
 .question {
     /* margin: 20px; */
     display: flex;
@@ -84,13 +85,13 @@
     width: 80%;
     height: 80%;
     margin-top: 20px;
-    
+
 
 }
 
 .stars {
     font-size: 25px;
-    
+
 }
 
 .qtitre {
@@ -105,4 +106,3 @@
     font-size: 20px;
     padding: 10px;
 }
-

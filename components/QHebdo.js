@@ -1,4 +1,4 @@
-import styles from '../styles/Qhebdo.module.css';
+import styles from '../styles/QHebdo.module.css';
 import Link from 'next/link';
 import Headerblanc from './Headerblanc';
 import Footerblanc from './Footerblanc';
