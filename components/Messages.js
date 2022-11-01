@@ -13,6 +13,13 @@ const URL_BACKEND = require("../modules/url_backend");
 
 function message() {
 
+  const [count2, setCount2] = useState('');
+      //fonction compteur pour transiter les infos de puis la fille (MessageCollab) vers la mere (Message)
+      const compteur = (message) =>{
+        setCount2(message.length);
+    }
+  
+
     const user = useSelector((state) => state.user.value);
     const [MessagesData, setMessagesData] = useState([]);
 
@@ -21,14 +28,14 @@ function message() {
       fetch(`${URL_BACKEND}/messages/MessageCollab/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
-
+          compteur (data.data);
     setMessagesData(data.data);
           console.log(MessagesData);
         });
-    }, []);
+    }, [count2]);
   
     const messages = MessagesData.map((data, i) => {
-      return <MessageCollab key={i} {...data} />;
+      return <MessageCollab key={i} {...data} compteur={compteur} />;
     });
     
 return (

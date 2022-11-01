@@ -12,6 +12,9 @@ const URL_BACKEND = require("../modules/url_backend");
 function Plan(props) {
     const [Reponse, setReponse] = useState('');
     const user = useSelector((state) => state.user.value);
+  
+  //tunnel mis en place pour remonter l'info qu'un message est saisi en réponse pour mise à jour de la page des message dans dashboard manager
+
 
 
     // const handleRepondre = () => {
@@ -39,6 +42,35 @@ function Plan(props) {
 //                       }});
 
 //     }
+//Enlever les plans d'actiond qui ne sont plus en cours
+const handleSupprimer = () => {
+
+  props.compteur(props.message);
+  fetch(`${URL_BACKEND}/messages/PlanFalse` , {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({  message: props.message }),
+  }).then(response => response.json())
+  .then(data => {
+        
+    console.log ("data:" ,data)
+        if (data) {
+        setReponse('');
+       
+
+            }else {
+          
+              }})
+
+  // setPlan('');
+};
+
+let userSection;
+if (user.manager) {
+  userSection = (
+    <button className={styles.btn} onClick={() => handleSupprimer()}>Supprimer</button>
+  )};
+
 
   return (
     <div className={styles.container}>
@@ -51,6 +83,7 @@ function Plan(props) {
         </div>
         <div className={styles.label}>
         <div className={styles.messageenvoye}>{props.message}</div>
+        {userSection}
         </div>
         </div>
         {/* <input type="text" placeholder="Votre réponse" className={styles.input}onChange={(e) => setReponse(e.target.value)} value={Reponse}  />

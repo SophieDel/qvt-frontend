@@ -1,6 +1,7 @@
 import styles from "../styles/MessageCollab.module.css";
 import moment from "moment";
 
+const URL_BACKEND = require("../modules/url_backend");
 
 function MessageCollab(props) {
 
@@ -8,6 +9,28 @@ function MessageCollab(props) {
   // console.log (props.dateRecep);
 //   console.log( "type props.lien", typeof(props.lien))
 //   console.log(typeof(props.lien) == "string")
+
+const handleSupprimer = () => {
+
+  props.compteur(props.message);
+  fetch(`${URL_BACKEND}/messages/messagesup` , {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({  message: props.message }),
+  }).then(response => response.json())
+  .then(data => {
+        
+    console.log ("data:" ,data)
+        if (data) {
+       
+            }else {
+          
+              }})
+
+  // setPlan('');
+};
+
+
 
   return (
     <div className={styles.container}>
@@ -26,6 +49,7 @@ function MessageCollab(props) {
         <div>
         <div className={styles.label}>Réponse du manager: 
         <div className={styles.question}>{props.reponse}</div>
+        <button className={styles.btn} onClick={() => handleSupprimer()}>Supprimer</button>
         </div>
         </div>
         </div>

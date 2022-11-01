@@ -6,6 +6,7 @@ import Footerblanc from "./Footerblanc";
 import Menu from "./Menu";
 import { useDispatch, useSelector } from "react-redux";
 import Plan from "./Plan";
+import { count } from "../../qvt-backend/models/users";
 
 const URL_BACKEND = require("../modules/url_backend");
 
@@ -41,11 +42,18 @@ function Dashboard() {
   const [Q2, setQ2] = useState(null);
   const [Q3, setQ3] = useState(null);
   const [derniereSemaine, setDerniereSemaine] = useState(null);
+  const [count2, setCount2] = useState('');
+
+    //fonction compteur pour transiter les infos de puis la fille (Plan) vers la mere (dashboar)
+    const compteur = (message) =>{
+      setCount2(message.length);
+  }
 
 
 
 
   const user = useSelector((state) => state.user.value);
+
   const token = user.token
 
   // Display des articles à l'initialisation, selon le thème qui est ressorti à l'issue du questionnaire
@@ -73,22 +81,24 @@ function Dashboard() {
     return <Article key={i} {...data} />;
   });
 
-  // import des plans actifs à l'initialisation,
+  // import des plans actifs à l'initialisation, et mise à jour apres le choix du manager
 
   useEffect(() => {
     fetch(`${URL_BACKEND}/messages/PlanEquipe/${user.equipe}`)
       .then((response) => response.json())
       .then((data) => {
+        compteur (data.data);
         console.log("les plans:", data);
         setPlanData(data.data);
-        //   setCount(count+1)
+console.log("count" ,count)
+console.log("count2" ,count2)
       });
-  }, []);
+  }, [count2]);
 
   let plans;
   if (PlanData) {
     plans = PlanData.map((data, i) => {
-      return <Plan key={i} {...data} />;
+      return <Plan key={i} {...data} compteur={compteur} />;
     });
   } else {
     plans = <></>;
