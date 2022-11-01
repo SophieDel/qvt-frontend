@@ -15,9 +15,12 @@ function Questionnaire() {
   const dispatch = useDispatch();
 
   // A l'initialisation de la page, on veut cleaner le store
-  useEffect(() => {
-    dispatch(clearReponses());
-  }, []);
+  if (user.profil === null){
+    useEffect(() => {
+      dispatch(clearReponses());
+    }, []);
+  }
+
 
   function transformObjectToArrayOfObjects(ob) {
     return Object.keys(ob).map(key => {
