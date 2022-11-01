@@ -30,16 +30,23 @@ function Home() {
         .then(data => {
           console.log ("avant if", data)
             if (data.result) {
-          
-                dispatch(login({prenom : data.prenom, nom : data.nom, token: data.token, equipe : data.equipe, manager: data.manager}));
+                dispatch(login({prenom : data.prenom, nom : data.nom, token: data.token, equipe : data.equipe, manager: data.manager, profil: data.profil}));
                 //, equipe: data.equipe, manager: data.manager
                 console.log(data)
                 console.log ("ok")
                 setSignInEmail('');
                 setSignInPassword('');
+                // Si le salarié a déjà un profil/thème, alors on le renvoie directeement au dashboard, sinon il remplit le questionnaire
+                if (data.profil){
+                  window.location.href = "/dashboard"
+                } else {
+                  window.location.href = "/questionnaire"
+                }
             //     // setIsModalVisible(false)
-            //METTRE CONDITION DE RENVOI A DASHBOARD SI LE QUESTIONNAIRE A ETE REMPLI
-                window.location.href = "/questionnaire"
+
+            
+
+                
 
             //     setOpen(false);
             // }    setOpen(false);
