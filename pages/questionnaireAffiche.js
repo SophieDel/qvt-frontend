@@ -28,8 +28,8 @@ function QuestionnaireAffiche() {
     <div>
       <Headervert />
       <div className={styles.questions}>{questionsRepondues}</div>
-      <div >
-        <button onClick={() => (window.location.href = "/dashboard")}>
+      <div className={styles.buttonDiv}>
+        <button className={styles.button} onClick={() => (window.location.href = "/dashboard")}>
           Retour au Dashboard
         </button>
       </div>

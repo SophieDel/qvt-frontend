@@ -58,8 +58,8 @@ function Questionnaire() {
     <div>
       <Headervert />
       <div className={styles.questions}>{questions}</div>
-      <div className={styles.submit}>
-        <button onClick={() => handleSubmit()}>
+      <div className={styles.buttonDiv}>
+        <button className={styles.button} onClick={() => handleSubmit()}>
           Soumettre le questionnaire
         </button>
       </div>
