@@ -1,18 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/Article.module.css";
-import Image from "next/image";
-import Link from "next/link";
 
 function Article(props) {
-  // const handleOpenArticle = () => {
-  //   console.log("click");
-  //   // window.location.replace(props.lien);
-  //   window.open(props.lien, "_blank", "noopener,noreferrer");
-  // };
-  
-  // console.log( "type props.lien", typeof(props.lien))
-  // console.log(typeof(props.lien) == "string")
+  const defaultImageSrc =
+    "https://sante-pratique-paris.fr/wp-content/uploads/2020/01/ok-adobestock-487261315-peopleimages-com-burn-out-1333x1000.webp";
 
   return (
     <div className={styles.articles}>
@@ -22,8 +12,12 @@ function Article(props) {
       <div className={styles.container}>
         <div className={styles.illustrationContainer}>
           <img
-          className={styles.illustration}
-            src={props.illustration}
+            className={styles.illustration}
+            src={
+              props.illustration == undefined || props.illustration == ""
+                ? defaultImageSrc
+                : props.illustration
+            }
             alt="contenu Media"
           />
         </div>
@@ -31,8 +25,9 @@ function Article(props) {
           <p>{props.resume}</p>
         </div>
         <div className={styles.lien}>
-            
-        <a href={props.lien} target="_blank" rel="noopener noreferrer" >En savoir plus</a>
+          <a href={props.lien} target="_blank" rel="noopener noreferrer">
+            En savoir plus
+          </a>
         </div>
       </div>
     </div>
