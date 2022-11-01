@@ -1,20 +1,12 @@
-import styles from "../styles/Questionnaire.module.css";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useEffect, useState } from "react";
+import Select from "@mui/material/Select";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateReponses } from "../reducers/user";
 
 function Question(props) {
-  //     return (
-  //         <div className={styles.container}>
-  // <div className={styles.numeroQuestion}>{props.numeroQuestion}</div>
-  // <div className={styles.question}>{props.question} </div>
-  // <div className={styles.reponses}>{props.reponse}</div>
-  // </div>
-  //     )
+
 
   const [reponse, setReponse] = useState({[props.numeroQuestion]: ""});
   const dispatch = useDispatch();
@@ -45,12 +37,11 @@ function Question(props) {
   menuItems.unshift(defaultMenuItem);
 
   return (
-    <FormControl>
+    <FormControl style={{ padding: 3, width: "fit-content" }}>
       <p>{props.question}</p>
       <Select
         value={reponse[props.numeroQuestion]}
         onChange={handleChange}
-        className={styles.selectItems}
       >
         {menuItems}
       </Select>
