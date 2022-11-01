@@ -1,0 +1,33 @@
+.contain {
+    font-size: 20px;
+    border: #79AEA3 5px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 80%;
+    width: 100%; */
+    margin: 100px;
+}
+
+.titre {
+    font-size: 40px;
+    font-weight: 600;
+    color: #79aea3;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.soustitre {
+    font-size: 30px;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+.texte {
+    font-size: 20px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
