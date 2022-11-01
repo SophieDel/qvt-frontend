@@ -10,6 +10,8 @@
 
 .titre {
     font-size: 30px;
+    font-weight: 600;
+    margin: 30px
     /* margin-top: 20px;
     margin-bottom: 30px; */
 }
