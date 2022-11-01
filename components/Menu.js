@@ -104,7 +104,7 @@ function Menu() {
             <div>
               <div>{qhebdoSection}</div>
               <div>
-                <Button href="/questionnaire" className={styles.liens}>
+                <Button href="/questionnaireAffiche" className={styles.liens}>
                   {" "}
                   Mon questionnaire
                 </Button>
