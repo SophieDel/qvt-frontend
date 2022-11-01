@@ -1,9 +1,7 @@
-import styles from "../styles/Questionnaire.module.css";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useEffect, useState } from "react";
+import Select from "@mui/material/Select";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateReponses } from "../reducers/user";
 
@@ -45,12 +43,11 @@ function Question(props) {
   menuItems.unshift(defaultMenuItem);
 
   return (
-    <FormControl>
+    <FormControl style={{padding: 3, width: "fit-content"}}>
       <p>{props.question}</p>
       <Select
         value={reponse[props.numeroQuestion]}
         onChange={handleChange}
-        className={styles.selectItems}
       >
         {menuItems}
       </Select>
