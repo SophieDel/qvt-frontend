@@ -4,9 +4,8 @@ import styles from "../styles/Dashboard.module.css";
 import Headerblanc from "./Headerblanc";
 import Footerblanc from "./Footerblanc";
 import Menu from "./Menu";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import Plan from "./Plan";
-import { count } from "../../qvt-backend/models/users";
 
 const URL_BACKEND = require("../modules/url_backend");
 
@@ -85,7 +84,6 @@ function Dashboard() {
         compteur (data.data);
         console.log("les plans:", data);
         setPlanData(data.data);
-console.log("count" ,count)
 console.log("count2" ,count2)
       });
   }, [count2]);
