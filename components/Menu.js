@@ -78,14 +78,14 @@ function Menu() {
 
   return (
     <div className={styles.contain}>
-      <div>
-        {/* <div className={styles.titre}>DASHBOARD
+      {/* { <div className={styles.titre}>DASHBOARD
 <div>
 <Button href = "/dashboard" className={styles.liens}> Mon dashboard</Button></div>
 
-</div> */}
+</div>} */}
 
-        <div className={styles.menusection}>
+      <div className={styles.menusection}>
+        <div className={styles.menuSousSection}>
           <div className={styles.titre}>
             DASHBOARD
             <div>
@@ -98,7 +98,9 @@ function Menu() {
               <div>{managerSection}</div>
             </div>
           </div>
+        </div>
 
+        <div className={styles.menuSousSection}>
           <div className={styles.titre}>
             QUIZ
             <div>
@@ -111,7 +113,9 @@ function Menu() {
               </div>
             </div>
           </div>
+        </div>
 
+        <div className={styles.menuSousSection}>
           <div className={styles.titre}>
             REPORTINGS
             <div>
@@ -121,22 +125,23 @@ function Menu() {
               </Button>
             </div>
           </div>
-
-          {userSection}
         </div>
-        <div className={styles.menusection}>
+      </div>
+
+      <div className={styles.menuUserSubSection}>
+        {userSection}
           <div className={styles.profil}>
-            <FontAwesomeIcon className={styles.icon} icon={faUser} />
+            <FontAwesomeIcon className={styles.icon} icon={faUser}/>
 
             <Button href="/profil" className={styles.liens}>
               {" "}
               {user.prenom} {user.nom}
               <div>Mon profil</div>
             </Button>
-          </div>
         </div>
       </div>
     </div>
+    // </div>
   );
 }
 

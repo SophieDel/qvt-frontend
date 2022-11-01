@@ -1,12 +1,19 @@
 .contain {
     background-color: #79AEA3;
-    width: 15%;
+    width: "fit-content";
     height: 100%;
+    margin: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
+    justify-content: space-between;
+}
+
+.menusection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .titre {
@@ -36,6 +43,7 @@
 .icon {
     height: 40px;
     margin-right: 10px;
+    padding: 10px
 }
 
 .liens {
@@ -50,7 +58,15 @@
 .menusection {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: stretch;
+    align-items: flex-start;
     /* align-items: space-between; */
+}
+
+.menuUserSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 10px
 }
 
