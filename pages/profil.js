@@ -26,8 +26,7 @@ function profil() {
 
   let userInfoUsed = ["prenom", "nom", "equipe"];
   const profil = userInfoUsed.map((infoName, i) => {
-    const formattedInfoName = infoName[0].toUpperCase().concat(infoName.slice(1))
-    return <ProfileInfo key={i} infoName={formattedInfoName} info={user[infoName]}></ProfileInfo>;
+    return <ProfileInfo key={i} infoName={infoName} info={user[infoName]}></ProfileInfo>;
   });
 
   return (

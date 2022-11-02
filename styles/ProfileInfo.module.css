@@ -42,7 +42,57 @@
     position: right;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
 .iconContainer:hover .tooltiptext {
     visibility: visible;
 }
+
+.modal {
+    position: relative;
+    /* top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px; */
+    background-color: papayawhip;
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay {
+    position: relative;
+    /* top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    z-index: 5;
+    background-color: rebeccapurple;
+  }
+
+  .inputContainer {
+    display: flex;
+    margin: 10px
+  }
+
+.closeButtonDiv {
+    height: "10px";
+    width: "10px";
+}
+
+  
+  .input{
+    width: 150;
+    /* border-bottom-bolor: "#ec6e5b";
+    borderBottomWidth: 1; */
+    font-size: 16;
+  }
+
+  .button {
+    border-radius: 10;
+    margin: 10px
+  }
+
+  .textButton{
+    color: "#ffffff";
+    height: 24;
+    font-weight: "600";
+    font-size: 15;
+  }
