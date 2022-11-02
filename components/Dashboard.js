@@ -4,8 +4,10 @@ import styles from "../styles/Dashboard.module.css";
 import Headerblanc from "./Headerblanc";
 import Footerblanc from "./Footerblanc";
 import Menu from "./Menu";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Plan from "./Plan";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar} from '@fortawesome/free-solid-svg-icons';
 
 const URL_BACKEND = require("../modules/url_backend");
 
@@ -41,12 +43,12 @@ function Dashboard() {
   const [Q2, setQ2] = useState(null);
   const [Q3, setQ3] = useState(null);
   const [derniereSemaine, setDerniereSemaine] = useState(null);
-  const [count2, setCount2] = useState('');
+  const [count2, setCount2] = useState("");
 
-    //fonction compteur pour transiter les infos de puis la fille (Plan) vers la mere (dashboar)
-    const compteur = (message) =>{
-      setCount2(message.length);
-  }
+  //fonction compteur pour transiter les infos de puis la fille (Plan) vers la mere (dashboar)
+  const compteur = (message) => {
+    setCount2(message.length);
+  };
 
   const user = useSelector((state) => state.user.value);
   const token = user.token;
@@ -81,10 +83,10 @@ function Dashboard() {
     fetch(`${URL_BACKEND}/messages/PlanEquipe/${user.equipe}`)
       .then((response) => response.json())
       .then((data) => {
-        compteur (data.data);
+        compteur(data.data);
         console.log("les plans:", data);
         setPlanData(data.data);
-console.log("count2" ,count2)
+        console.log("count2", count2);
       });
   }, [count2]);
 
@@ -126,6 +128,15 @@ console.log("count2" ,count2)
   //     )
   //   };
 
+  function starsIconsDependingMark(mark) {
+    let starsArray = [];
+    for (let i=1; i <= 10; i++){
+      starsArray.push(<FontAwesomeIcon key={i} icon={faStar} style={mark >= i ? {} : {'color': '#79AEA3'}} className={styles.icon} />)
+    }
+return starsArray
+  }
+
+
   return (
     <div className={styles.main}>
       <Headerblanc />
@@ -136,9 +147,24 @@ console.log("count2" ,count2)
             Votre mood de la semaine {derniereSemaine}
           </h2>
           <div className={styles.mood}>
-            <div>Votre niveau de stress: {Q1}/10 </div>
-            <div>Confiance en votre manager: {Q2}/10</div>
-            <div>Votre niveau de motivation: {Q3}/10</div>
+            <div className={styles.moodSection}>
+              <div>Votre niveau de stress: </div>
+              <div className={styles.moodStars}>
+                {starsIconsDependingMark(Q1)}
+                {/* {Q1}/10 */}
+                </div>
+            </div>
+            <div className={styles.moodSection}>
+              <div>Confiance en votre manager: </div>
+              <div className={styles.moodStars}>
+                {starsIconsDependingMark(Q2)}
+                {/* {Q2}/10 */}
+                </div>
+            </div>
+            <div className={styles.moodSection}>
+              <div>Votre niveau de motivation: </div>
+              <div className={styles.moodStars}>{starsIconsDependingMark(Q3)}</div>
+            </div>
           </div>
           <h2 className={styles.h2}>Votre plan d'action personnalisé</h2>
           <div className={styles.articlesContainer}>{articles}</div>
