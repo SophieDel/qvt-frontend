@@ -34,9 +34,13 @@ export const userSlice = createSlice({
     },
     updateProfil: (state, action) => {
       state.value.profil = action.payload
+    },
+    changeProfilInfo: (state, action) => {
+      // action est un objet {infoName: ..., info: ...}
+      state.value[action.payload.infoName] = action.payload.info
     }
   },
 });
 
-export const { login, logout, updateReponses, clearReponses, updateProfil } = userSlice.actions;
+export const { login, logout, updateReponses, clearReponses, updateProfil, changeProfilInfo } = userSlice.actions;
 export default userSlice.reducer;

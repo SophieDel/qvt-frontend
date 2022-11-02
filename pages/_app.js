@@ -8,8 +8,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import user from '../reducers/user';
 import count from '../reducers/count';
+import openedModalName from '../reducers/openedModalName';
 
-const reducers = combineReducers({ user, count });
+const reducers = combineReducers({ user, count, openedModalName });
 const persistConfig = { key: 'qvtstore', storage };
 
 
