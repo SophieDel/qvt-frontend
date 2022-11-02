@@ -15,18 +15,22 @@ import { faHeart, faStar, faVideo } from "@fortawesome/free-solid-svg-icons";
 import Menu from "../components/Menu";
 import MessageCollab from "../components/MessagesCollab";
 
-// function profil() {
-// return <Profil />
-
-// }
 
 function profil() {
   const user = useSelector((state) => state.user.value);
   const [MessagesData, setMessagesData] = useState([]);
 
   let userInfoUsed = ["prenom", "nom", "equipe"];
+
+  
   const profil = userInfoUsed.map((infoName, i) => {
-    return <ProfileInfo key={i} infoName={infoName} info={user[infoName]}></ProfileInfo>;
+    return (
+      <ProfileInfo
+        key={i}
+        infoName={infoName}
+        info={user[infoName]}
+      ></ProfileInfo>
+    );
   });
 
   return (

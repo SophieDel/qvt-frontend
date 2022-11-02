@@ -46,53 +46,54 @@
     visibility: visible;
 }
 
+
 .modal {
+    border-radius: 10px;
     position: relative;
-    /* top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px; */
-    background-color: papayawhip;
+    background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
+    height: 130px;
+    width: 430px;
 }
 
 .overlay {
-    position: relative;
-    /* top: 10px;
-    left: 0;
-    right: 0;
-    bottom: 0; */
-    z-index: 5;
-    background-color: rebeccapurple;
-  }
+    position: absolute;
+    top: 400px;
+    right: 100px;
+    background-color: #f0f0f0;
+}
 
-  .inputContainer {
+.inputContainer {
     display: flex;
-    margin: 10px
-  }
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 5px;
+    height: 40%;
+}
 
 .closeButtonDiv {
     height: "10px";
     width: "10px";
 }
 
-  
-  .input{
-    width: 150;
-    /* border-bottom-bolor: "#ec6e5b";
-    borderBottomWidth: 1; */
+
+.input {
+    padding: 5px;
+    height: 85%;
+    width: 75%;
     font-size: 16;
-  }
+    border-radius: 10px;
+}
 
-  .button {
-    border-radius: 10;
-    margin: 10px
-  }
-
-  .textButton{
-    color: "#ffffff";
-    height: 24;
+.button {
+    position: center;
+    height: 85%;
+    width: 15%;
+    border-radius: 10px;
+    margin: 10px;
+    color: #f0f0f0;
+    background-color: #79aea3;
     font-weight: "600";
     font-size: 15;
-  }
+}
