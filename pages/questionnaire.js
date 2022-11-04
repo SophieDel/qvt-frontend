@@ -33,7 +33,7 @@ function Questionnaire() {
     fetch(`${URL_BACKEND}/questionnaire/reponses`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reponses: transformObjectToArrayOfObjects(user.reponses) }),
+      body: JSON.stringify({ reponses: transformObjectToArrayOfObjects(user.reponses), token: user.token }),
     })
       .then((response) => response.json())
       .then((data) => {
