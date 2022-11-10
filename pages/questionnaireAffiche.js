@@ -2,7 +2,7 @@ import styles from "../styles/Questionnaire.module.css";
 import Headervert from "../components/Headervert";
 import Footervert from "../components/Footervert";
 import { useSelector } from "react-redux";
-import * as inituleQuestions from "../public/intituleQuestionsPerso.json";
+const inituleQuestions = require("../public/intituleQuestionsPerso")
 import QuestionRepondue from "../components/QuestionRepondue";
 
 function QuestionnaireAffiche() {
@@ -17,10 +17,6 @@ function QuestionnaireAffiche() {
         <QuestionRepondue question={inituleQuestion} reponse={reponse}>
 
         </QuestionRepondue>
-    //   <div>
-    //     <p>{inituleQuestion}</p>
-    //     <p>{reponse}</p>
-    //   </div>
     );
   });
 
