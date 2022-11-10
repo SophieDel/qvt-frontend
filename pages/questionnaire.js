@@ -1,7 +1,7 @@
 import styles from "../styles/Questionnaire.module.css";
 import Headervert from "../components/Headervert";
 import Footervert from "../components/Footervert";
-import * as inituleQuestions from "../public/intituleQuestionsPerso.json";
+// import * as inituleQuestions from "../public/intituleQuestionsPerso";
 // inituleQuestions = require("../public/intituleQuestionsPerso.json")
 import Question from "../components/Question";
 import { useEffect, useState } from "react";
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {  clearReponses, updateProfil } from "../reducers/user";
 
 const URL_BACKEND = require("../modules/url_backend");
+const inituleQuestions = require("../public/intituleQuestionsPerso")
 
 function Questionnaire() {
   const user = useSelector((state) => state.user.value);

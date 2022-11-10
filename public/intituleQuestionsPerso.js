@@ -1,4 +1,4 @@
-[
+const inituleQuestions = [
   {
     "Q11": {
       "question": "Je trouve que ma santé est globalement",
@@ -294,3 +294,5 @@
     }
   }
 ]
+
+module.exports = inituleQuestions
